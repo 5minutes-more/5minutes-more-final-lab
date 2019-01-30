@@ -21,6 +21,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: [constants.ROLE_ADMIN, constants.ROLE_GUEST],
         default: constants.ROLE_GUEST
+    },
+    photo: {
+        type: String
     }
 }, { timestamps: true });
 
