@@ -4,7 +4,8 @@ module.exports.create = (req, res, next) => {
     res.render('sessions/create');
 }
 
-module.exports.createWithIDCallback = (req, res, next) => {
+module.exports.createWithIDPCallback = (req, res, next) => {
+    console.log(req.params.provider)
     passport.authenticate(`${req.params.provider}-auth`, (error, user) => {
         if (error) {
             next(error);
@@ -13,9 +14,10 @@ module.exports.createWithIDCallback = (req, res, next) => {
                 if (error) {
                     next(error);
                 } else {
-                    res.redirect('/users/list')
+                    res.redirect('/users')
                 }
             })
         }
-    })(req, res, next)
-}
+    })(req, res, next);
+    }
+
