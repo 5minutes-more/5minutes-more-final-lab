@@ -9,6 +9,8 @@ router.get('/', authMiddleware.isAuthenticated, usersController.list);
 router.post('/:id/delete', 
   authMiddleware.isAuthenticated,
   authMiddleware.checkRole(constants.ROLE_ADMIN),
+
   usersController.doDelete);
 
 module.exports = router;
+
