@@ -5,8 +5,7 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.createWithIDPCallback = (req, res, next) => {
-    console.log(req.params.provider)
-    passport.authenticate(`${req.params.provider}-auth`, (error, user) => {
+    passport.authenticate(`google-auth`, (error, user) => {
         if (error) {
             next(error);
         } else {
@@ -19,5 +18,5 @@ module.exports.createWithIDPCallback = (req, res, next) => {
             })
         }
     })(req, res, next);
-    }
+}
 

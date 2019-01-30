@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema({
 userSchema.pre('save', function(next){
     if (this.email === FIRST_ADMIN_EMAIL || this.email === SECOND_ADMIN_EMAIL){
         this.role = constants.ROLE_ADMIN;
+        next();
     }  else {
         next();
     }
