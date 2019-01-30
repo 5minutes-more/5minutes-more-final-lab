@@ -7,8 +7,8 @@ const SECOND_ADMIN_EMAIL = process.env.SECOND_ADMIN_EMAIL;
 
 const userSchema = new mongoose.Schema({
     name: {
-        type: String
-        // required: 'Name is required'
+        type: String,
+        required: 'Name is required'
     },
     email: {
         type: String,
@@ -24,6 +24,16 @@ const userSchema = new mongoose.Schema({
     },
     photo: {
         type: String
+    },
+    origin: {
+        type: {type: String, default: 'Point'},
+        coordinates: [Number],
+        // required: 'Location is required'
+    },
+    preferences: {
+        type: [String],
+        enum: ["Coffee", "gluten Free", "Juice", "Cocoa", "Donut", "Tea", "Sandwich"],
+        // required: 'You need to populate at least one preference'
     }
 }, { timestamps: true });
 

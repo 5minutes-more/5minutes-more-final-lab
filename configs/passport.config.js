@@ -29,6 +29,7 @@ function authenticateOAuthUser(accesToken, refreshToken, profile, next) {
       if (user) {
         next(null, user);
       } else {
+        const ImgUrl = profile._json.image.url.replace("?sz=50", "?sz=200")
         user = new User({
           name: profile.displayName,
           email: profile.emails[0].value,
@@ -36,7 +37,7 @@ function authenticateOAuthUser(accesToken, refreshToken, profile, next) {
           social: {
             [social]: profile.id
           },
-          photo: profile.photos[0].value
+          photo: ImgUrl
         });
         return user.save()
           .then(user => {
