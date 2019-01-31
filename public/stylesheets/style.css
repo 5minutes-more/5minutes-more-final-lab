@@ -12,3 +12,10 @@ a {
   height: 400px;
   margin-top:  20px;
 }
+
+.preferences {
+  height: 100px;
+  width: 230px;
+  background-image: url("../images/button-preference-veggie.png");
+  background-size: cover;
+}

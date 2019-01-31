@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
     },
     preferences: {
         type: [String],
-        enum: ["Coffee", "gluten Free", "Juice", "Cocoa", "Donut", "Tea", "Sandwich"],
+        enum: ["coffee", "gluten free", "juice", "cocoa", "donut", "tea", "sandwich", "salad"],
         // required: 'You need to populate at least one preference'
     }
 }, { timestamps: true });

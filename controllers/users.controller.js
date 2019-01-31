@@ -22,20 +22,22 @@ module.exports.doCreate = (req, res, next) => {
       email: res.locals.session.email
     })
     .then(user => {
-      if (!user.origin) {
+      if (user.origin.length === 0) {
         res.render('users/create', {
           user: req.body,
-          error: error.errors
+          errors: { origin: 'Position is required'}
         })
-      // } else if (!user.preferences) {
-      //   res.render('users/create', {
-      //     user: req.body,
-      //     error: error.errors
-      //   })
+      } else if (user.preferences.length === 0) {
+        res.render('users/create', {
+          user: req.body,
+          errors: { preferences: 'You should select at least one preference.'}
+        })
       } else {
         user.origin.type = 'Point';
         user.origin.coordinates = [req.body.longitude, req.body.latitude];
-        // user.preferences = req.body.preferences;
+        const preferences = document.getElementsByClassName('preferences');
+        console.log(preferences);
+        user.preferences = preferences;
         return user.save()
           .then (res.render('users/main', { user }))
       }

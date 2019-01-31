@@ -1,24 +1,85 @@
 <article id="create-user">
-<div class="row mt-5">
-  <form action="/users/create" method="post" class="col-4 mx-auto">
-  <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
-        </div>
-        <input type="text" id="latitude" class="form-control" name="latitude" placeholder="Latitude"/>
+  <form action="/users/create" method="post" class="col-4 mx-auto"></form>
+  <div class="row mt-5">
+    <h2>Find in the map your position:</h2>
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
       </div>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
-        </div>
-        <input type="text" id="longitude" class="form-control" name="longitude" placeholder="Longitude"/>
+      <input type="text" id="latitude" class="form-control" name="latitude" placeholder="Latitude" />
+    </div>
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
       </div>
-      
-      <div class="form-actions">
-        <button class="btn btn-primary btn-block" type="submit" >Sign up</button>
-      </div>
-  </form>
-</div>
-{{> map}}
-</article>
+      <input type="text" id="longitude" class="form-control" name="longitude" placeholder="Longitude" />
+    </div>
+    <input id="pac-input" class="controls form-control mb-5" style="width: 400px;" type="text" placeholder="Search Box">
 
+
+  </div>
+  {{> map}}
+  <div class="row mt-5">
+  </div>
+  <h2>Choose your breakfast preferences:</h2>
+  <div class="row mb-5 ">
+
+    <div class="col mx-auto mb-3">
+      <button name="coffee" type="button" class="btn btn-primary preferences coffee" data-toggle="button" aria-pressed="false"
+        autocomplete="off">
+        Coffee
+      </button>
+    </div>
+    <div class="col mx-auto mb-3">
+      <button name="gluten free" type="button" class="btn btn-primary preferences gluten" data-toggle="button"
+        aria-pressed="false" autocomplete="off">
+        Gluten Free
+      </button>
+    </div>
+    <div class="col mx-auto mb-3">
+      <button name="juice" type="button" class="btn btn-primary preferences juice" data-toggle="button" aria-pressed="false"
+        autocomplete="off">
+        Juice
+      </button>
+    </div>
+    <div class="col mx-auto mb-3">
+      <button name="cocoa" type="button" class="btn btn-primary preferences cocoa" data-toggle="button" aria-pressed="false"
+        autocomplete="off">
+        Cocoa
+      </button>
+    </div>
+
+  </div>
+  <div class="row mb-5 ">
+    <div class="col mx-auto mb-3">
+      <button name="donut" type="button" class="btn btn-primary preferences donut" data-toggle="button" aria-pressed="false"
+        autocomplete="off">
+        Donut
+      </button>
+    </div>
+    <div class="col mx-auto mb-3">
+      <button name="tea" type="button" class="btn btn-primary preferences tea" data-toggle="button" aria-pressed="false"
+        autocomplete="off">
+        Tea
+      </button>
+    </div>
+    <div class="col mx-auto mb-3">
+      <button name="sandwich" type="button" class="btn btn-primary preferences sandwich" data-toggle="button"
+        aria-pressed="false" autocomplete="off">
+        Sandwich
+      </button>
+    </div>
+    <div class="col mx-auto mb-3">
+      <button name="salad" type="button" class="btn btn-primary preferences salad" data-toggle="button" aria-pressed="false"
+        autocomplete="off">
+        Salad
+      </button>
+    </div>
+
+  </div>
+  </div>
+  <div class="form-actions">
+    <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+  </div>
+  </form>
+</article>

@@ -5,6 +5,56 @@ function initMap() {
   
     window.map = new Map(domElement);
     window.map.init();
+    
+    //search box
+    const input = document.getElementById('pac-input');
+    const searchBox = new google.maps.places.SearchBox(input);
+    window.map.googleMap.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+
+    window.map.googleMap.addListener('bounds_changed', function(){
+      searchBox.setBounds(window.map.googleMap.getBounds());
+    });
+
+    searchBox.addListener('places_changed', function(){
+      const places = searchBox.getPlaces();
+      
+      if (places.length == 0){
+        return;
+      }
+
+      window.map.clearMarkers();
+
+      const bounds = new google.maps.LatLngBounds();
+      places.forEach( function(place){
+        if (!place.geometry){
+          console.log('Retunred place contains no geometry');
+          return;
+        } 
+        const icon = {
+          url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+        };
+
+        window.map.markers.push(new google.maps.Marker({
+          map: window.map,
+          icon: icon,
+          tilte: place.name,
+          position: place.geometry.location
+        }));
+
+        if (place.geometry.viewport){
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(places.geometry.location);
+        }
+      });
+      window.map.googleMap.fitBounds(bounds); 
+    })
+
+    
   
     if (navigator.geolocation) {
       centerMapOnBrowser();

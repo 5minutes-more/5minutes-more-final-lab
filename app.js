@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 // app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sessions', sessionsRouter);
-app.use('/', (req, res, next)=> res.redirect('/main'));
+app.use('/', (req, res, next)=> res.redirect('/users'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
