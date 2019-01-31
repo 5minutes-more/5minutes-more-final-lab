@@ -1,6 +1,16 @@
 const createError = require('http-errors');
 const mongoose = require('mongoose');
 const User = require('../models/user.model');
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+
+const { document } = (new JSDOM({
+  url: "http://localhost:3000/users/create",
+  referrer: "http://localhost:3000",
+  contentType: "text/html",
+  storageQuota: 10000000
+})).window;
+
 
 module.exports.list = (req, res, next) => {
   User.find()
