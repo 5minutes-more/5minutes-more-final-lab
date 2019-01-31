@@ -17,26 +17,26 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
-  console.log(req.body);
-  User.findOne({
+    User.findOne({
       email: res.locals.session.email
     })
     .then(user => {
-      if (user.origin.length === 0) {
+      const preferences = document.getElementsByClassName('active');
+      console.log(preferences);
+      if (!req.body.latitude) {
         res.render('users/create', {
           user: req.body,
           errors: { origin: 'Position is required'}
         })
-      } else if (user.preferences.length === 0) {
+      } else if (preferences.length === 0) {
         res.render('users/create', {
           user: req.body,
           errors: { preferences: 'You should select at least one preference.'}
         })
       } else {
+        console.log('Entra en guardar datos')
         user.origin.type = 'Point';
         user.origin.coordinates = [req.body.longitude, req.body.latitude];
-        const preferences = document.getElementsByClassName('preferences');
-        console.log(preferences);
         user.preferences = preferences;
         return user.save()
           .then (res.render('users/main', { user }))

@@ -119,3 +119,4 @@ function initMap() {
     window.map.addMarker(lat, lng, id);
   }
   
+ 
