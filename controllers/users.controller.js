@@ -16,12 +16,22 @@ module.exports.create = (req, res, next) => {
   res.render('users/create');
 }
 
+function addPreference(object, preference, array){
+  if (object[preference]){
+    array.push(preference);
+  }
+}
+
 module.exports.doCreate = (req, res, next) => {
+    const pref = ["coffee", "glutenfree", "juice", "cocoa", "donut", "tea", "sandwich", "salad"];
+
     User.findOne({
       email: res.locals.session.email
     })
     .then(user => {
-      const preferences = document.getElementsByClassName('active');
+      const preferences = [];
+      pref.forEach(preference => {
+        addPreference(req.body, preference, preferences)});
       console.log(preferences);
       if (!req.body.latitude) {
         res.render('users/create', {
