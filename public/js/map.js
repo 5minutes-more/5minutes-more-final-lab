@@ -9,8 +9,8 @@ class Map {
       this.googleMap = new google.maps.Map(this.containerDomElement, {
         zoom: 5,
         center: {
-          lat: 41.3977381,
-          lng: 2.190471916
+          lat: 40.438,
+          lng: -3.682
         }
       });
     }
