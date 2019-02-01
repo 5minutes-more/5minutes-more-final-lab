@@ -44,7 +44,6 @@ module.exports.doCreate = (req, res, next) => {
           errors: { preferences: 'You should select at least one preference.'}
         })
       } else {
-        console.log('Entra en guardar datos')
         user.origin.type = 'Point';
         user.origin.coordinates = [req.body.longitude, req.body.latitude];
         user.preferences = preferences;

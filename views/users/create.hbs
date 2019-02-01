@@ -1,60 +1,63 @@
 <article id="create-user">
-  <form action="/users/create" method="post" class="mx-auto">
-  <div class="row mt-5">
-    <h2>Find in the map your position:</h2>
-    <div class="input-group mb-2">
-      <div class="input-group-prepend">
-        <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+  <form action="/users/create" method="post" class="form">
+    <div class="container">
+      <h2 class="mb-3">Find in the map your position:</h2>
+
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+        </div>
+        <input type="text" id="latitude" class="form-control" name="latitude" placeholder="Latitude" />
       </div>
-      <input type="text" id="latitude" class="form-control" name="latitude" placeholder="Latitude" />
-    </div>
-    <div class="input-group mb-2">
-      <div class="input-group-prepend">
-        <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+        </div>
+        <input type="text" id="longitude" class="form-control" name="longitude" placeholder="Longitude" />
       </div>
-      <input type="text" id="longitude" class="form-control" name="longitude" placeholder="Longitude" />
     </div>
-    <input id="pac-input" class="controls form-control mb-5" style="width: 400px;" type="text" placeholder="Search Box">
-
-
-  </div>
-  {{> map}}
-  <div class="row mt-5">
-  </div>
-  <h2>Choose your breakfast preferences:</h2>
-  <div class="row mb-5 ">
-
-    <div class="col mx-auto mb-3">
-      <label>Coffee</label><input type="checkbox" name="coffee">
+    <input id="pac-input" class="controls form-control mt-3 shadow-lg" style="width: 400px;" type="text" placeholder="Search Box">
+    <div class="container">
+      {{> map}}
     </div>
-    <div class="col mx-auto mb-3">
-      <label>Gluten Free</label><input type="checkbox" name="glutenfree">
+    <div class="container">
+      <h2 class="mb-3 mt-3">Choose your breakfast preferences:</h2>
+      <div class="inputGroup">
+        <input id="option1" name="coffee" type="checkbox" />
+        <label for="option1">Coffee</label>
+      </div>
+      <div class="inputGroup">
+        <input id="option2" name="glutenfree" type="checkbox" />
+        <label for="option2">Gluten Free</label>
+      </div>
+      <div class="inputGroup">
+        <input id="option3" name="juice" type="checkbox" />
+        <label for="option3">Juice</label>
+      </div>
+      <div class="inputGroup">
+        <input id="option4" name="cocoa" type="checkbox" />
+        <label for="option4">Cocoa</label>
+      </div>
+      <div class="inputGroup">
+        <input id="option5" name="donut" type="checkbox" />
+        <label for="option5">Donut</label>
+      </div>
+      <div class="inputGroup">
+        <input id="option6" name="tea" type="checkbox" />
+        <label for="option6">Tea</label>
+      </div>
+      <div class="inputGroup">
+        <input id="option7" name="sandwich" type="checkbox" />
+        <label for="option7">Sandwich</label>
+      </div>
+      <div class="inputGroup">
+        <input id="option8" name="salad" type="checkbox" />
+        <label for="option8">Salad</label>
+      </div>
     </div>
-    <div class="col mx-auto mb-3">
-      <label>Juice</label><input type="checkbox" name="juice">
+    <div class="form-actions container">
+      <button class="btn btn-primary btn-block" type="submit">Sign up</button>
     </div>
-    <div class="col mx-auto mb-3">
-      <label>Cocoa</label><input type="checkbox" name="cocoa">
-    </div>
-  </div>
-  <div class="row mb-5 ">
-    <div class="col mx-auto mb-3">
-      <label>Donut</label><input type="checkbox" name="donut">
-    </div>
-    <div class="col mx-auto mb-3">
-      <label>Tea</label><input type="checkbox" name="tea">
-    </div>
-    <div class="col mx-auto mb-3">
-      <label>Sandwich</label><input type="checkbox" name="sandwich">
-    </div>
-    <div class="col mx-auto mb-3">
-      <label>Salad</label><input type="checkbox" name="salad">
-    </div>
-  </div>
-  </div>
-  <div class="form-actions">
-    <button class="btn btn-primary btn-block" type="submit">Sign up</button>
-  </div>
   </form>
   <script src="../../controllers/users.controller.js"></script>
 </article>

@@ -8,6 +8,7 @@ class Map {
     init() {
       this.googleMap = new google.maps.Map(this.containerDomElement, {
         zoom: 5,
+        disableDefaultUI: true,
         center: {
           lat: 40.438,
           lng: -3.682
