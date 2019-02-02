@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: '5minutes_secret',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: {
     secure: false,
