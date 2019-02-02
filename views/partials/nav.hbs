@@ -7,24 +7,17 @@
 
 	<div class="collapse navbar-collapse" id="main-nav-content">
 		<ul class="navbar-nav mr-auto">
-			{{#if session}}
+			{{#isAdmin session}}
 				<li class="nav-item active">
-					<a class="nav-link" href="/users">Users</a>
+					<a class="nav-link" href="/users/list">Users</a>
 				</li>
-			{{else}}
-				<li class="nav-item active">
-					<a class="nav-link" href="/sessions/create">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="/users/create">Register</a>
-				</li>
-			{{/if}}
+			{{/isAdmin}}
 		</ul>
 	</div>
 	<ul class="navbar-nav mr-auto">
 		{{#if session}}
             <li class="nav-item mt-2">
-                <img class="nav-pic  rounded mx-auto d-block" src="{{user.photo}}"
+                <img class="nav-pic  rounded mx-auto d-block" src="{{session.photo}}"
             </li>
 			<li class="nav-item">
 				<a class="nav-link disabled" href="javascript:;">{{ session.email }}</a>

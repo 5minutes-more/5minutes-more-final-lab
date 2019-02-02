@@ -1,6 +1,8 @@
 const createError = require('http-errors');
 const mongoose = require('mongoose');
 const User = require('../models/user.model');
+const Place = require('../models/place.model')
+const axios = require("axios");
 
 module.exports.list = (req, res, next) => {
   User.find()
@@ -74,3 +76,12 @@ module.exports.doDelete = (req, res, next) => {
     })
     .catch(error => next(error));
 }
+
+module.exports.main = (req, res, next) => {
+  axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.user.origin.coordinates[1]},${req.user.origin.coordinates[0]}&radius=500&type=bar&keyword=breakfast&key=AIzaSyC0jdO1zXKgYtxNXWCEhbTdrbLNLBhrfJ0`)
+    .then(response => {
+      res.render("users/main", { restaurants: response.data.results })
+    })
+    .catch(error => next(error))
+}
+
