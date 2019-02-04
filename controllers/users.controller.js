@@ -83,10 +83,10 @@ module.exports.doDelete = (req, res, next) => {
 module.exports.main = (req, res, next) => {
   axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.user.origin.coordinates[1]},${req.user.origin.coordinates[0]}&radius=500&type=bar&keyword=breakfast&key=AIzaSyATnEHZ5TdCSSo4O5GohaYg-kEJGqiAxfE`)
     .then(response => {
-      response.data.results.forEach(e => {
-        console.info(' => ', e.geometry.location);
-      })
-      console.log(response.data.results)
+      // response.data.results.forEach(e => {
+      //   console.info(' => ', e.geometry.location);
+      // })
+      // console.log(response.data.results)
       res.render("users/main", { restaurants: response.data.results })
     })
     .catch(error => next(error))
