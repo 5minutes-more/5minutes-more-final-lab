@@ -7,15 +7,20 @@
     <div class="row flex-row flex-nowrap scrolling-wrapper">
         {{#each restaurants as |restaurant|}}
         <div class="mr-1">
+            <form action="/users/main" method="post" class="form">
             <div class="card m-2" style="width: 22rem;">
                 <img class="card-img-top" src="https://picsum.photos/500/180/?random" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><span class="badge badge-pill badge-warning">{{restaurant.rating}}</span> {{restaurant.name}}</h5>
-                    
+                    <input class="d-none" type="text" name="restaurantId" value="{{restaurant.id}}"/>
+                    <input class="d-none" type="text" name="restaurantName" value="{{restaurant.name}}"/>
+                    <input class="d-none" type="text" name="restaurantRating" value="{{restaurant.rating}}"/>
+                    <input class="d-none" type="text" name="restaurantVicinity" value="{{restaurant.vicinity}}"/>
                     <p class="card-text">{{restaurant.vicinity}}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <button type="submit" class="btn btn-primary">Hacer Pedido</button>
                 </div>
             </div>
+            </form>
         </div>
         {{/each}}
     </div>

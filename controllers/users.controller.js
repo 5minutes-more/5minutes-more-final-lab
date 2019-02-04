@@ -85,10 +85,30 @@ module.exports.main = (req, res, next) => {
     .then(response => {
       // response.data.results.forEach(e => {
       //   console.info(' => ', e.geometry.location);
-      // })
-      // console.log(response.data.results)
+      // }
+      //console.log(response.data.results);
       res.render("users/main", { restaurants: response.data.results })
     })
     .catch(error => next(error))
 }
 
+module.exports.doMain = (req, res, next) => {
+  console.log(req.body)
+  Place.findOne({ name:req.body.restaurantName })
+  .then(restaurant => {
+    if(!restaurant){
+      const rest = new Place({
+        id: req.body.restaurantId,
+        name: req.body.restaurantName,
+        rating: req.body.restaurantRating,
+        vicinity: req.body.restaurantVicinity,
+        email: 'a.lucia.cazorla@gmail.com'
+      });
+      return rest.save()  
+      .then (res.render('user/order', {rest}));
+    } else {
+      res.render('users/order', {restaurant});
+    }
+  })
+  .catch( error => next(error))
+}

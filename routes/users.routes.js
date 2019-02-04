@@ -16,6 +16,15 @@ router.get('/create',
   usersController.create);
 router.post('/create', usersController.doCreate)
 
+// router.get('/main',
+//   authMiddleware.isAuthenticated,
+//   userMiddleware.isRegistered,
+//   usersController.main);
+
+router.post('/main',
+  authMiddleware.isAuthenticated,
+  usersController.doMain);
+
 router.post('/:id/delete', 
   authMiddleware.isAuthenticated,
   authMiddleware.checkRole(constants.ROLE_ADMIN),
