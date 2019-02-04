@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const User = require('../models/user.model');
 const Place = require('../models/place.model')
 const axios = require("axios");
+const constants = require('../constants');
 
 module.exports.list = (req, res, next) => {
   User.find()
@@ -25,16 +26,13 @@ function addPreference(object, preference, array){
 }
 
 module.exports.doCreate = (req, res, next) => {
-    const pref = ["coffee", "glutenfree", "juice", "cocoa", "donut", "tea", "sandwich", "salad"];
-
     User.findOne({
       email: res.locals.session.email
     })
     .then(user => {
       const preferences = [];
-      pref.forEach(preference => {
+      constants.PREF_CONST.forEach(preference => {
         addPreference(req.body, preference, preferences)});
-      console.log(preferences);
       if (!req.body.latitude) {
         res.render('users/create', {
           user: req.body,
@@ -50,7 +48,12 @@ module.exports.doCreate = (req, res, next) => {
         user.origin.coordinates = [req.body.longitude, req.body.latitude];
         user.preferences = preferences;
         return user.save()
-          .then (res.render('users/main', { user }))
+          .then ( user => {
+            return axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.user.origin.coordinates[1]},${req.user.origin.coordinates[0]}&radius=500&type=bar&keyword=breakfast&key=AIzaSyATnEHZ5TdCSSo4O5GohaYg-kEJGqiAxfE`)
+            .then(response => {
+              res.render("users/main", { user, restaurants: response.data.results })
+            })
+          })
       }
     })
     .catch(error => {
@@ -78,8 +81,12 @@ module.exports.doDelete = (req, res, next) => {
 }
 
 module.exports.main = (req, res, next) => {
-  axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.user.origin.coordinates[1]},${req.user.origin.coordinates[0]}&radius=500&type=bar&keyword=breakfast&key=AIzaSyC0jdO1zXKgYtxNXWCEhbTdrbLNLBhrfJ0`)
+  axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.user.origin.coordinates[1]},${req.user.origin.coordinates[0]}&radius=500&type=bar&keyword=breakfast&key=AIzaSyATnEHZ5TdCSSo4O5GohaYg-kEJGqiAxfE`)
     .then(response => {
+      response.data.results.forEach(e => {
+        console.info(' => ', e.geometry.location);
+      })
+      console.log(response.data.results)
       res.render("users/main", { restaurants: response.data.results })
     })
     .catch(error => next(error))

@@ -2,13 +2,19 @@ const constants = require('../constants');
 const mongoose = require('mongoose');
 
 const placeSchema = new mongoose.Schema({
-    name: {
+    id:{
         type: String,
-        required: 'Name is required'
     },
     email: {
         type: String,
         unique: true
+    },
+    name: {
+        type: String,
+        required: 'Name is required'
+    },
+    rating: {
+        type: String,
     },
     photo: {
         type: String
@@ -17,7 +23,7 @@ const placeSchema = new mongoose.Schema({
         type: {type: String, default: 'Point'},
         coordinates: [Number],
     },
-    adress: {
+    vicinity: {
         type: String,
     },
     menu: {

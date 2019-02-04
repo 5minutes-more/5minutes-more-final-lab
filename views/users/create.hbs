@@ -1,63 +1,65 @@
-<article id="create-user">
-  <form action="/users/create" method="post" class="form">
-    <div class="container">
-      <h2 class="mb-3">Find in the map your position:</h2>
+<div class="container">
+  <article id="create-user">
+    <form action="/users/create" method="post" class="form">
+      <div class="container">
+        <h2 class="mb-3">Find in the map your position:</h2>
 
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+          </div>
+          <input type="text" id="latitude" class="form-control" name="latitude" placeholder="Latitude" />
         </div>
-        <input type="text" id="latitude" class="form-control" name="latitude" placeholder="Latitude" />
-      </div>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+          </div>
+          <input type="text" id="longitude" class="form-control" name="longitude" placeholder="Longitude" />
         </div>
-        <input type="text" id="longitude" class="form-control" name="longitude" placeholder="Longitude" />
       </div>
-    </div>
-    <input id="pac-input" class="controls form-control mt-3 shadow-lg" style="width: 400px;" type="text" placeholder="Search Box">
-    <div class="container">
-      {{> map}}
-    </div>
-    <div class="container">
-      <h2 class="mb-3 mt-3">Choose your breakfast preferences:</h2>
-      <div class="inputGroup">
-        <input id="option1" name="coffee" type="checkbox" />
-        <label for="option1">Coffee</label>
+      <input id="pac-input" class="controls form-control mt-3 shadow-lg" style="width: 400px;" type="text" placeholder="Search Box">
+      <div class="container">
+        {{> map}}
       </div>
-      <div class="inputGroup">
-        <input id="option2" name="glutenfree" type="checkbox" />
-        <label for="option2">Gluten Free</label>
+      <div class="container">
+        <h2 class="mb-3 mt-3">Choose your breakfast preferences:</h2>
+        <div class="inputGroup">
+          <input id="option1" name="coffee" type="checkbox" />
+          <label for="option1">Coffee</label>
+        </div>
+        <div class="inputGroup">
+          <input id="option2" name="glutenfree" type="checkbox" />
+          <label for="option2">Gluten Free</label>
+        </div>
+        <div class="inputGroup">
+          <input id="option3" name="juice" type="checkbox" />
+          <label for="option3">Juice</label>
+        </div>
+        <div class="inputGroup">
+          <input id="option4" name="cocoa" type="checkbox" />
+          <label for="option4">Cocoa</label>
+        </div>
+        <div class="inputGroup">
+          <input id="option5" name="donut" type="checkbox" />
+          <label for="option5">Donut</label>
+        </div>
+        <div class="inputGroup">
+          <input id="option6" name="tea" type="checkbox" />
+          <label for="option6">Tea</label>
+        </div>
+        <div class="inputGroup">
+          <input id="option7" name="sandwich" type="checkbox" />
+          <label for="option7">Sandwich</label>
+        </div>
+        <div class="inputGroup">
+          <input id="option8" name="salad" type="checkbox" />
+          <label for="option8">Salad</label>
+        </div>
       </div>
-      <div class="inputGroup">
-        <input id="option3" name="juice" type="checkbox" />
-        <label for="option3">Juice</label>
+      <div class="form-actions container">
+        <button class="btn btn-primary btn-block" type="submit">Sign up</button>
       </div>
-      <div class="inputGroup">
-        <input id="option4" name="cocoa" type="checkbox" />
-        <label for="option4">Cocoa</label>
-      </div>
-      <div class="inputGroup">
-        <input id="option5" name="donut" type="checkbox" />
-        <label for="option5">Donut</label>
-      </div>
-      <div class="inputGroup">
-        <input id="option6" name="tea" type="checkbox" />
-        <label for="option6">Tea</label>
-      </div>
-      <div class="inputGroup">
-        <input id="option7" name="sandwich" type="checkbox" />
-        <label for="option7">Sandwich</label>
-      </div>
-      <div class="inputGroup">
-        <input id="option8" name="salad" type="checkbox" />
-        <label for="option8">Salad</label>
-      </div>
-    </div>
-    <div class="form-actions container">
-      <button class="btn btn-primary btn-block" type="submit">Sign up</button>
-    </div>
-  </form>
-  <script src="../../controllers/users.controller.js"></script>
-</article>
+    </form>
+    <script src="../../controllers/users.controller.js"></script>
+  </article>
+</div>
