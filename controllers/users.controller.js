@@ -93,10 +93,10 @@ module.exports.main = (req, res, next) => {
     .catch(error => next(error))
 }
 
+
 module.exports.doMain = (req, res, next) => {
-  console.log(req.body)
   Place.findOne({ name:req.body.restaurantName })
-  .then(restaurant => {
+  .then(restaurant => { 
     if(!restaurant){
       const menu = shuffleMenu();
       const lat = req.body.restaurantLocationLat;
@@ -115,9 +115,11 @@ module.exports.doMain = (req, res, next) => {
         location: location
       });
       return rest.save()  
-      .then (res.render('user/order', {rest}));
+      .then (() => {
+        res.render('user/order', { rest });
+      })
     } else {
-      res.render('users/order', {restaurant});
+      res.render('users/order', { restaurant });
     }
   })
   .catch( error => next(error))
@@ -126,4 +128,13 @@ module.exports.doMain = (req, res, next) => {
 
 function shuffleMenu() {
   return constants.PREF_CONST.sort(function() {return Math.random() - 0.5}).slice(0, Math.random() * constants.PREF_CONST.length)
+}
+
+module.exports.order = (req,res,next) => {
+  console.log(req.params)
+  res.render('users/order');
+}
+
+module.exports.doOrder = (req, res, next) => {
+  // console.log(req.body)
 }

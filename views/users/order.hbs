@@ -1,1 +1,7 @@
-<h1>{{restaurant.name}}</h1>
+<form action="/users/order" method="post" class="form">
+    <h1>{{restaurant.opening_hours.open_now}}</h1>
+    <h1>{{restaurant.opening_hours}}</h1>
+    <input class="" type="text" name="restaurantId" value="{{restaurant.id}}" />
+    <h1>{{restaurant.name}}</h1>
+    <button type="submit" class="btn btn-primary">Hacer Pedido</button>
+</form>
