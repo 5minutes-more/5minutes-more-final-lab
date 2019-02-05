@@ -14,7 +14,16 @@ router.get('/create',
   authMiddleware.isAuthenticated,
   userMiddleware.isRegistered,
   usersController.create);
-router.post('/create', usersController.doCreate)
+
+router.post('/create', 
+  usersController.doCreate);
+
+router.get('/edit',
+  authMiddleware.isAuthenticated,
+  usersController.edit);
+
+// router.post('/edit', 
+//   usersController.doEdit);
 
 router.get('/main',
   authMiddleware.isAuthenticated,
