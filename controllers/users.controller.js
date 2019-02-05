@@ -25,12 +25,15 @@ module.exports.edit = (req, res, next) => {
     })
     .then(user => {
       res.render('users/create', { user })
+      //llamar al usuario
     })
 }
 
 function addPreference(object, preference, array) {
   if (object[preference]) {
     array.push(preference);
+  } else {
+    array.push(undefined);
   }
 }
 
@@ -41,7 +44,7 @@ module.exports.doCreate = (req, res, next) => {
     .then(user => {
       const preferences = [];
       constants.PREF_CONST.forEach(preference => {
-        addPreference(req.body, preference, preferences)
+        addPreference(req.body, preference, preferences);
       });
       if (!req.body.latitude) {
         res.render('users/create', {
