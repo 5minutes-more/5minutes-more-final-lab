@@ -84,9 +84,10 @@ module.exports.main = (req, res, next) => {
   axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.user.origin.coordinates[1]},${req.user.origin.coordinates[0]}&radius=500&type=bar&keyword=breakfast&key=AIzaSyATnEHZ5TdCSSo4O5GohaYg-kEJGqiAxfE`)
     .then(response => {
       // response.data.results.forEach(e => {
-      //   console.info(' => ', e.geometry.location);
-      // }
-      //console.log(response.data.results);
+      //   const lat = e.geometry.location.lat;
+      //   console.info(' => ', lat);
+      // })
+      // console.log(response.data.results);
       res.render("users/main", { restaurants: response.data.results })
     })
     .catch(error => next(error))
@@ -97,12 +98,21 @@ module.exports.doMain = (req, res, next) => {
   Place.findOne({ name:req.body.restaurantName })
   .then(restaurant => {
     if(!restaurant){
+      const menu = shuffleMenu();
+      const lat = req.body.restaurantLocationLat;
+      const lng = req.body.restaurantLocationLng;
+      const location = { 
+        type: 'Point',
+        coordinates: [lng,lat]
+      }
       const rest = new Place({
         id: req.body.restaurantId,
         name: req.body.restaurantName,
         rating: req.body.restaurantRating,
         vicinity: req.body.restaurantVicinity,
-        email: 'a.lucia.cazorla@gmail.com'
+        email: 'a.lucia.cazorla@gmail.com',
+        menu: menu,
+        location: location
       });
       return rest.save()  
       .then (res.render('user/order', {rest}));
@@ -111,4 +121,9 @@ module.exports.doMain = (req, res, next) => {
     }
   })
   .catch( error => next(error))
+}
+
+
+function shuffleMenu() {
+  return constants.PREF_CONST.sort(function() {return Math.random() - 0.5}).slice(0, Math.random() * constants.PREF_CONST.length)
 }

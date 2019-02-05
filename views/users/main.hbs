@@ -9,13 +9,15 @@
         <div class="mr-1">
             <form action="/users/main" method="post" class="form">
             <div class="card m-2" style="width: 22rem;">
-                <img class="card-img-top" src="https://picsum.photos/500/180/?random" alt="Card image cap">
+                <img class="card-img-top" src="https://picsum.photos/500/180/" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><span class="badge badge-pill badge-warning">{{restaurant.rating}}</span> {{restaurant.name}}</h5>
                     <input class="d-none" type="text" name="restaurantId" value="{{restaurant.id}}"/>
                     <input class="d-none" type="text" name="restaurantName" value="{{restaurant.name}}"/>
                     <input class="d-none" type="text" name="restaurantRating" value="{{restaurant.rating}}"/>
                     <input class="d-none" type="text" name="restaurantVicinity" value="{{restaurant.vicinity}}"/>
+                    <input class="d-none" type="text" name="restaurantLocationLat" value="{{restaurant.geometry.location.lat}}"/>
+                    <input class="d-none" type="text" name="restaurantLocationLng" value="{{restaurant.geometry.location.lng}}"/>
                     <p class="card-text">{{restaurant.vicinity}}</p>
                     <button type="submit" class="btn btn-primary">Hacer Pedido</button>
                 </div>
