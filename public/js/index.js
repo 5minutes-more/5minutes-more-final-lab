@@ -1,4 +1,5 @@
 function initMap() {
+  console.info('entra initmap')
   const domElement = document.getElementById("map");
 
   if (!domElement) {
@@ -48,7 +49,7 @@ function initMap() {
       }
     });
     window.map.googleMap.fitBounds(bounds);
-
+    console.log('entra aqui searchbox')
   })
 
 
@@ -56,6 +57,8 @@ function initMap() {
   if (navigator.geolocation) {
     centerMapOnBrowser();
   }
+
+  console.log('Entra fuiera de todo')
 
   // means we are on create users page!
   if (document.getElementById("create-user")) {
@@ -67,6 +70,15 @@ function initMap() {
   //  means we are on list users page!
   } else if (document.getElementById("list-users")) {
     addUsersMarkers();
+
+  //means we are on order page!  
+  } else if (document.getElementById("order-page")){
+    console.info('Entra')
+    // console.info(document.getElementById("lat").value);
+    addMarker(document.getElementById("lat").value,document.getElementById("lng").value);
+    showAllMarkers();
+  } else {
+    console.log('Entra else')
   }
 }
 

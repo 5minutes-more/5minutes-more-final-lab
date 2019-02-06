@@ -32,8 +32,13 @@ const userSchema = new mongoose.Schema({
     },
     preferences: {
         type: [String],
-        enum: ["coffee", "glutenfree", "juice", "cocoa", "donut", "tea", "sandwich", "salad"],
+        enum: constants.PREF_CONST.map(p => p.id),
+        default: []
         // required: 'You need to populate at least one preference'
+    },
+    favBar: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Place' 
     }
 }, { timestamps: true });
 

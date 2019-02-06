@@ -48,53 +48,25 @@ function isEmpty(array) {
 }
 
 module.exports.doCreate = (req, res, next) => {
-  User.findOne({
-      email: res.locals.session.email
-    })
-    .then(user => {
-      const preferences = [];
-      constants.PREF_CONST.forEach(preference => {
-        addPreference(req.body, preference, preferences);
-      });
-      if (!req.body.latitude) {
-        res.render('users/create', {
-          user: req.body,
-          errors: {
-            origin: 'Position is required'
-          }
-        })
-      } else if (isEmpty(preferences)) {
-        res.render('users/create', {
-          user: req.body,
-          errors: {
-            preferences: 'You should select at least one preference.'
-          }
-        })
-      } else {
-        user.origin.type = 'Point';
-        user.origin.coordinates = [req.body.longitude, req.body.latitude];
-        user.preferences = preferences;
-        return user.save()
-          .then(user => {
-            return axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${req.user.origin.coordinates[1]},${req.user.origin.coordinates[0]}&radius=500&type=bar&keyword=breakfast&key=AIzaSyATnEHZ5TdCSSo4O5GohaYg-kEJGqiAxfE`)
-              .then(response => {
-                res.render("users/main", {
-                  user,
-                  restaurants: response.data.results
-                })
-              })
-          })
-      }
-    })
-    .catch(error => {
-      if (error instanceof mongoose.Error.ValidationError) {
-        res.render('users/create', {
-          errors: error.errors
-        })
-      } else {
-        next(error)
-      }
-    })
+  console.log(req.body)
+  req.user.origin.coordinates = [req.body.longitude, req.body.latitude];
+  req.user.preferences = req.body.preferences;
+
+  req.user
+  .save()
+  .then(user => {
+    res.redirect("/users/main")
+  })
+  .catch(error => {
+    if (error instanceof mongoose.Error.ValidationError) {
+      res.render('users/create', {
+        user: req.body,
+        errors: error.errors
+      })
+    } else {
+      next(error)
+    }
+  });  
 }
 
 module.exports.edit = (req, res, next) => {
@@ -109,7 +81,7 @@ module.exports.edit = (req, res, next) => {
 }
 
 module.exports.doDelete = (req, res, next) => {
-  User.findByIdAndRemove(req.params.id)
+  User.findByIdAndRemove(req.user.id)
     .then(user => {
       if (!user) {
         next(createError(404, 'User not found'));
@@ -143,12 +115,14 @@ module.exports.doMain = (req, res, next) => {
     .then(restaurant => {
       if (!restaurant) {
         const menu = shuffleMenu();
+        //peticion de axios si no esta el restaurante y rellenar
         const lat = req.body.restaurantLocationLat;
         const lng = req.body.restaurantLocationLng;
         const location = {
           type: 'Point',
           coordinates: [lng, lat]
-        }
+        };
+        const prices = randomMenu(menu);
         const rest = new Place({
           id: req.body.restaurantId,
           name: req.body.restaurantName,
@@ -156,7 +130,8 @@ module.exports.doMain = (req, res, next) => {
           vicinity: req.body.restaurantVicinity,
           email: 'a.lucia.cazorla@gmail.com',
           menu: menu,
-          location: location
+          location: location,
+          completeMenu: prices
         });
         return rest.save()
           .then(() => {
@@ -173,14 +148,28 @@ module.exports.doMain = (req, res, next) => {
     .catch(error => next(error))
 }
 
+function randomMenu(arr){
+  let res = [];
+  arr.forEach(e => {
+    console.info(Math.random()*3);
+    const price = (Math.random()*3).toFixed(2);
+    const obj = {
+      pref: e,
+      price: price
+    }
+    res.push(obj);
+  })
+  console.info(res);
+  return res;
+}
+
 function shuffleMenu() {
   return constants.PREF_CONST.sort(function () {
     return Math.random() - 0.5
-  }).slice(0, Math.random() * constants.PREF_CONST.length)
+  }).slice(0, Math.random() * constants.PREF_CONST.length + 1)
 }
 
 module.exports.order = (req, res, next) => {
-  console.log(req.params)
   res.render('users/order');
 }
 

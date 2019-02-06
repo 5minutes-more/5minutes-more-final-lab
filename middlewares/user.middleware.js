@@ -1,10 +1,9 @@
 const createError = require('http-errors');
 
 module.exports.isRegistered = (req, res, next) => {
-    const { origin, preferences } = res.locals.session
-    if (!origin.coordinates.length && !preferences.length){
+    if (req.user.origin.coordinates && req.user.preferences.length > 1) {
         next();
     } else {
-        res.redirect('/users/main');
+        res.redirect('/users/create');
     }
-}
+} 

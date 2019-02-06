@@ -8,9 +8,9 @@
         {{#each restaurants as |restaurant|}}
         {{#if restaurant.opening_hours.open_now}}
         <div class="mr-1">
-            <form action="/users/main" method="post" class="form">
+            {{!-- <form action="/users/main" method="post" class="form"> --}}
             <div class="card m-2" style="width: 22rem;">
-                <img class="card-img-top" src="https://picsum.photos/500/180/" alt="Card image cap">
+                <img class="card-img-top" src="https://source.unsplash.com/random/1200x500/?coffee,breakfast" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><span class="badge badge-pill badge-warning">{{restaurant.rating}}</span> {{restaurant.name}}</h5>
                     <input class="d-none" type="text" name="restaurantId" value="{{restaurant.id}}"/>
@@ -20,10 +20,10 @@
                     <input class="d-none" type="text" name="restaurantLocationLat" value="{{restaurant.geometry.location.lat}}"/>
                     <input class="d-none" type="text" name="restaurantLocationLng" value="{{restaurant.geometry.location.lng}}"/>
                     <p class="card-text">{{restaurant.vicinity}}</p>
-                    <button type="submit" class="btn btn-primary">Hacer Pedido</button>
+                    <a href="/{{restaurant.name}}/order" class="btn btn-primary">Ver restaurante</button>
                 </div>
             </div>
-            </form>
+            {{!-- </form> --}}
         </div>
         {{/if}}
         {{/each}}

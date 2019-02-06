@@ -16,10 +16,10 @@ router.get('/list',
 
 router.get('/create',
   authMiddleware.isAuthenticated,
-  userMiddleware.isRegistered,
   usersController.create);
 
 router.post('/create',
+  authMiddleware.isAuthenticated,
   usersController.doCreate)
 
 router.get('/edit',
@@ -32,10 +32,12 @@ router.get('/edit',
 
 router.get('/main',
   authMiddleware.isAuthenticated,
+  userMiddleware.isRegistered,
   usersController.main);
 
 router.post('/main',
   authMiddleware.isAuthenticated,
+  userMiddleware.isRegistered,
   usersController.doMain);
 
 router.post('/:id/delete',
@@ -43,12 +45,16 @@ router.post('/:id/delete',
   authMiddleware.checkRole(constants.ROLE_ADMIN),
   usersController.doDelete);
 
+
+
 router.get('/order',
   authMiddleware.isAuthenticated,
+  userMiddleware.isRegistered,
   usersController.order);
 
 router.post('/order',
   authMiddleware.isAuthenticated,
+  userMiddleware.isRegistered,
   usersController.doOrder);
 
 module.exports = router;

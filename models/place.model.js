@@ -16,7 +16,7 @@ const placeSchema = new mongoose.Schema({
         type: String,
     },
     photo: {
-        type: String
+       type: String
     },
     location: {
         type: {type: String, default: 'Point'},
@@ -28,6 +28,9 @@ const placeSchema = new mongoose.Schema({
     menu: {
         type: [String],
         enum: ["coffee", "glutenfree", "juice", "cocoa", "donut", "tea", "sandwich", "salad"],
+    },
+    completeMenu : {
+        type: [Object]
     }
 }, { timestamps: true });
 
