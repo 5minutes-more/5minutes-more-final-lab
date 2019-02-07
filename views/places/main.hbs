@@ -13,14 +13,9 @@
                 <img class="card-img-top" src="https://source.unsplash.com/random/1200x500/?coffee,breakfast" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title"><span class="badge badge-pill badge-warning">{{restaurant.rating}}</span> {{restaurant.name}}</h5>
-                    <input class="d-none" type="text" name="restaurantId" value="{{restaurant.id}}"/>
-                    <input class="d-none" type="text" name="restaurantName" value="{{restaurant.name}}"/>
-                    <input class="d-none" type="text" name="restaurantRating" value="{{restaurant.rating}}"/>
-                    <input class="d-none" type="text" name="restaurantVicinity" value="{{restaurant.vicinity}}"/>
-                    <input class="d-none" type="text" name="restaurantLocationLat" value="{{restaurant.geometry.location.lat}}"/>
-                    <input class="d-none" type="text" name="restaurantLocationLng" value="{{restaurant.geometry.location.lng}}"/>
+            
                     <p class="card-text">{{restaurant.vicinity}}</p>
-                    <a href="/{{restaurant.name}}/order" class="btn btn-primary">Ver restaurante</button>
+                    <a href="/places/{{restaurant.place_id}}" class="btn btn-primary">Ver restaurante</a>
                 </div>
             </div>
             {{!-- </form> --}}

@@ -8,31 +8,31 @@ module.exports = {
         },
         {
             id: "glutenfree",
-            name: "glutenfree"
+            name: "Gluten free"
         },
         {
             id: "juice",
-            name: "Cofee"
+            name: "Juice"
         },
         {
             id: "cocoa",
-            name: "cocoa"
+            name: "Cocoa"
         },
         {
             id: "donut",
-            name: "donut"
+            name: "Donut"
         },
         {
             id: "tea",
-            name: "tea"
+            name: "Tea"
         },
         {
             id: "sandwich",
-            name: "sandwich"
+            name: "Sandwich"
         },
         {
             id: "salad",
-            name: "salad"
+            name: "Salad"
         }
     ]
 }

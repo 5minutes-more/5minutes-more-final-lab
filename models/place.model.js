@@ -25,9 +25,11 @@ const placeSchema = new mongoose.Schema({
     vicinity: {
         type: String,
     },
-    menu: {
+    menu:  {
         type: [String],
-        enum: ["coffee", "glutenfree", "juice", "cocoa", "donut", "tea", "sandwich", "salad"],
+        enum: constants.PREF_CONST.map(p => p.id),
+        default: []
+        // required: 'You need to populate at least one preference'
     },
     completeMenu : {
         type: [Object]
