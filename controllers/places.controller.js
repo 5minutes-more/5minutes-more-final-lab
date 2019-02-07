@@ -90,7 +90,7 @@ module.exports.order = (req, res, next) => {
   .then(place => {
     if(!place){
       console.info("entra en el if")
-      axios.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.params.restaurantId}&fields=name,rating,vicinity,geometry,opening_hours&key=AIzaSyATnEHZ5TdCSSo4O5GohaYg-kEJGqiAxfE`)
+      return axios.get(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${req.params.restaurantId}&fields=name,rating,vicinity,geometry,opening_hours&key=AIzaSyATnEHZ5TdCSSo4O5GohaYg-kEJGqiAxfE`)
       .then(response => {
         console.log(response.data)
         const menu = shuffleMenu();
@@ -106,14 +106,15 @@ module.exports.order = (req, res, next) => {
           completeMenu: prices
         });
         return rest.save()
-          .then(() => {
+          .then( place => {
+            console.log("primera respuesta =>", place)
             res.render('places/order', {
               place
             });
           })
       })
     } else {
-      console.info("entra en el else")
+      console.log("segunda respuesta =>", place)
       res.render('places/order', { place })
     }
   })

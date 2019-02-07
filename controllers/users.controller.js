@@ -25,27 +25,8 @@ module.exports.edit = (req, res, next) => {
     })
     .then(user => {
       res.render('users/create', { user })
-      //llamar al usuario
     })
 }
-
-// function addPreference(object, preference, array) {
-//   if (object[preference]) {
-//     array.push(preference);
-//   } else {
-//     array.push(undefined);
-//   }
-// }
-
-// function isEmpty(array) {
-//   let res = true
-//   array.forEach(e => {
-//     if (e != undefined) {
-//       res = false
-//     }
-//   })
-//   return res
-// }
 
 module.exports.doCreate = (req, res, next) => {
 
@@ -55,7 +36,7 @@ module.exports.doCreate = (req, res, next) => {
   req.user
   .save()
   .then(user => {
-    res.redirect("/users/main")
+    res.redirect("/")
   })
   .catch(error => {
     if (error instanceof mongoose.Error.ValidationError) {
