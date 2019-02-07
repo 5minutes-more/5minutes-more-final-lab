@@ -1,5 +1,38 @@
 module.exports = {
     ROLE_ADMIN: 'ADMIN',
     ROLE_GUEST: 'GUEST',
-    PREF_CONST: ["coffee", "glutenfree", "juice", "cocoa", "donut", "tea", "sandwich", "salad"]
+    PREF_CONST: [
+        {
+            id: "coffee",
+            name: "Cofee"
+        },
+        {
+            id: "glutenfree",
+            name: "Gluten free"
+        },
+        {
+            id: "juice",
+            name: "Juice"
+        },
+        {
+            id: "cocoa",
+            name: "Cocoa"
+        },
+        {
+            id: "donut",
+            name: "Donut"
+        },
+        {
+            id: "tea",
+            name: "Tea"
+        },
+        {
+            id: "sandwich",
+            name: "Sandwich"
+        },
+        {
+            id: "salad",
+            name: "Salad"
+        }
+    ]
 }

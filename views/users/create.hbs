@@ -23,38 +23,12 @@
       </div>
       <div class="container">
         <h2 class="mb-3 mt-3">Choose your breakfast preferences:</h2>
+        {{#each allPreferences as |preference| }}
         <div class="inputGroup">
-          <input id="option1" name="coffee" type="checkbox" {{#if user.preferences.[0]}} checked {{/if}}/>
-          <label for="option1">Coffee</label>
+          <input id="option-{{preference.id}}" name="preferences" value="{{preference.id}}" type="checkbox" {{hasPreference ../session preference user.preferences }}/>
+          <label for="option-{{preference.id}}">{{preference.name}}</label>
         </div>
-        <div class="inputGroup">
-          <input id="option2" name="glutenfree" type="checkbox" {{#if user.preferences.[1]}} checked {{/if}}/>
-          <label for="option2">Gluten Free</label>
-        </div>
-        <div class="inputGroup">
-          <input id="option3" name="juice" type="checkbox" {{#if user.preferences.[2]}} checked {{/if}}/>
-          <label for="option3">Juice</label>
-        </div>
-        <div class="inputGroup">
-          <input id="option4" name="cocoa" type="checkbox" {{#if user.preferences.[3]}} checked {{/if}}/>
-          <label for="option4">Cocoa</label>
-        </div>
-        <div class="inputGroup">
-          <input id="option5" name="donut" type="checkbox" {{#if user.preferences.[4]}} checked {{/if}}/>
-          <label for="option5">Donut</label>
-        </div>
-        <div class="inputGroup">
-          <input id="option6" name="tea" type="checkbox" {{#if user.preferences.[5]}} checked {{/if}}/>
-          <label for="option6">Tea</label>
-        </div>
-        <div class="inputGroup">
-          <input id="option7" name="sandwich" type="checkbox" {{#if user.preferences.[6]}} checked {{/if}}/>
-          <label for="option7">Sandwich</label>
-        </div>
-        <div class="inputGroup">
-          <input id="option8" name="salad" type="checkbox" {{#if user.preferences.[7]}} checked {{/if}}/>
-          <label for="option8">Salad</label>
-        </div>
+        {{/each}}
       </div>
       <div class="form-actions container">
         <button class="btn btn-primary btn-block" type="submit">Sign up</button>
@@ -63,4 +37,3 @@
     <script src="../../controllers/users.controller.js"></script>
   </article>
 </div>
-{{user.preferences}}

@@ -13,7 +13,7 @@ module.exports.createWithIDPCallback = (req, res, next) => {
                 if (error) {
                     next(error);
                 } else {
-                    res.redirect('/users/create')
+                    res.redirect('/users/main')
                 }
             })
         }

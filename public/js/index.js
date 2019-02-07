@@ -48,7 +48,7 @@ function initMap() {
       }
     });
     window.map.googleMap.fitBounds(bounds);
-
+    
   })
 
 
@@ -56,6 +56,7 @@ function initMap() {
   if (navigator.geolocation) {
     centerMapOnBrowser();
   }
+
 
   // means we are on create users page!
   if (document.getElementById("create-user")) {
@@ -67,6 +68,13 @@ function initMap() {
   //  means we are on list users page!
   } else if (document.getElementById("list-users")) {
     addUsersMarkers();
+
+  //means we are on order page!  
+  } else if (document.getElementById("order-page")){
+    // console.info(document.getElementById("lat").value);
+    addMarker(document.getElementById("lat").value,document.getElementById("lng").value);
+    showAllMarkers();
+  } else {
   }
 }
 

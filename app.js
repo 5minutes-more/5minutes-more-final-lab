@@ -9,6 +9,7 @@ const session = require('express-session');
 const MongoStore = require("connect-mongo")(session);
 const passport = require('passport');
 const mongoose = require('mongoose');
+const constants = require('./constants');
 
 require('./configs/db.config');
 require('./configs/hbs.config');
@@ -16,6 +17,7 @@ require('./configs/passport.config');
 
 const usersRouter = require('./routes/users.routes');
 const sessionsRouter = require('./routes/sessions.routes');
+const placesRouter = require('./routes/places.routes');
 
 const app = express();
 
@@ -26,7 +28,7 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({
-  extended: false
+  extended: true
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -49,6 +51,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, res, next) => {
+  res.locals.allPreferences = constants.PREF_CONST;
   res.locals.session = req.user;
   next();
 })
@@ -58,7 +61,9 @@ app.use((req, res, next) => {
 // app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/sessions', sessionsRouter);
-app.use('/', (req, res, next) => res.redirect('/users'));
+app.use('/places', placesRouter);
+app.use('/', (req, res, next) => res.redirect('/places'));
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
