@@ -1,0 +1,44 @@
+<article id="order-page">
+  <div class="container">
+
+    {{> nav }}
+
+    <!-- Jumbotron -->
+    <form action="/orders/{{place.id}}/order" method="post" class="form">
+    <div class="card card-image jumbotronBackground">
+      <div class='checkboxes-container fav-place m-3'>
+        <div class='control-group'>
+          <input class='red-heart-checkbox' id='red-check2' type='checkbox' name="favoriteBar" value="{{place.id}}">
+          <label for='red-check2'>
+          </label>
+        </div>
+      </div>
+      <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+        <div class="py-5">
+          <h2 class="card-title h2 my-4 py-2">{{place.name}}</h2>
+          <p class="mb-4 pb-2 px-md-5 mx-md-5">{{place.vicinity}}</p>
+          <span class="badge badge-pill badge-warning">{{place.rating}}</span>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+
+    <div class="list-group">
+      {{#each place.completeMenu }}
+      <li class="list-group-item d-flex justify-content-between align-items-center"> {{this.pref}}<span class="badge badge-primary badge-pill">{{this.price}}</span>
+        <select name="units-{{this.pref}}" class="custom-select" id="inputGroupSelect01">
+          <option value="0"></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </li>
+      {{/each}}
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Hacer Pedido</button>
+  </form>
+
+  {{>map }}
+
+</article>

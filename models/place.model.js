@@ -2,7 +2,7 @@ const constants = require('../constants');
 const mongoose = require('mongoose');
 
 const placeSchema = new mongoose.Schema({
-    id:{
+    placeId:{
         type: String,
     },
     email: {

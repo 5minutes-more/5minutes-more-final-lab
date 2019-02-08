@@ -1,17 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const placesController = require('../controllers/places.controller');
+const ordersController = require('../controllers/orders.controller');
 const authMiddleware = require('../middlewares/auth.middleware');
 const userMiddleware = require('../middlewares/user.middleware');
 
-router.get('/',
+router.post('/:restaurantId/order',
   authMiddleware.isAuthenticated,
   userMiddleware.isRegistered,
-  placesController.main);
-
-router.get('/:restaurantId',
-  authMiddleware.isAuthenticated,
-  userMiddleware.isRegistered,
-  placesController.order);
+  ordersController.doOrder);
 
 module.exports = router;  

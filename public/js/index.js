@@ -71,7 +71,6 @@ function initMap() {
 
   //means we are on order page!  
   } else if (document.getElementById("order-page")){
-    // console.info(document.getElementById("lat").value);
     addMarker(document.getElementById("lat").value,document.getElementById("lng").value);
     showAllMarkers();
   } else {

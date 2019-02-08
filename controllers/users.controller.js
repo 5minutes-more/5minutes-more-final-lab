@@ -1,9 +1,6 @@
 const createError = require('http-errors');
 const mongoose = require('mongoose');
 const User = require('../models/user.model');
-// const Place = require('../models/place.model')
-// const axios = require("axios");
-// const constants = require('../constants');
 
 module.exports.list = (req, res, next) => {
   User.find()
