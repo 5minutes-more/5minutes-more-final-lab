@@ -26,12 +26,7 @@
     <div class="list-group">
       {{#each place.completeMenu }}
       <li class="list-group-item d-flex justify-content-between align-items-center"> {{this.pref}}<span class="badge badge-primary badge-pill">{{this.price}}</span>
-        <select name="units-{{this.pref}}" class="custom-select" id="inputGroupSelect01">
-          <option value="0"></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-        </select>
+        <input name="units-{{this.pref}}" type="number" min="0" max="20" placeholder="uds" style="width: 50px">
       </li>
       {{/each}}
     </div>

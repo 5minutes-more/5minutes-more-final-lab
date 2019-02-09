@@ -2,38 +2,29 @@ const constants = require('../constants');
 const mongoose = require('mongoose');
 
 const placeSchema = new mongoose.Schema({
-    placeId:{
-        type: String,
-    },
-    email: {
-        type: String,
-    },
+    placeId: String,
+    email: String,
     name: {
         type: String,
         required: 'Name is required'
     },
-    rating: {
-        type: String,
-    },
-    photo: {
-       type: String
-    },
+    rating: Number,
+    photo: String,
     location: {
         type: {type: String, default: 'Point'},
         coordinates: [Number],
     },
-    vicinity: {
-        type: String,
-    },
-    menu:  {
+    vicinity: String,
+    preferences:  {
         type: [String],
         enum: constants.PREF_CONST.map(p => p.id),
         default: []
         // required: 'You need to populate at least one preference'
     },
-    completeMenu : {
-        type: [Object]
-    }
+    menu:  [{
+        name: String,
+        price: Number
+    }],
 }, { timestamps: true });
 
 const Place = mongoose.model('Place', placeSchema);
