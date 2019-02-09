@@ -132,6 +132,15 @@ li{
 
  /* HEART FAVORITE */
 
+#fav-btn:before {
+  content: "💔";
+  color: #f00;
+}
+
+#fav-btn.favorite:before {
+  content: "❤️";
+}
+
 .red-heart-checkbox {
   visibility: hidden;
 }

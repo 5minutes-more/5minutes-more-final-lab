@@ -10,13 +10,18 @@ const orderSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Bar' 
     },
-    orderMenu: {
-        type: [Object],
-        default: []
-    },
+    orderMenu: [{
+        name: String,
+        price: Number,
+        units: Number
+    }],
     total: {
         type: Number,
         default: 0
+    },
+    payStatus: {
+        type: String,
+        enum: ["payed", "pending", "rejected"]
     }
 
 }, { timestamps: true });

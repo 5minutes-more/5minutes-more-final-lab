@@ -50,7 +50,7 @@ function randomizeMenu() {
         .slice(0, Math.random() * constants.PREF_CONST.length + 1);
     const menu = [];
     preferences.forEach(preference => {
-        const price = Number((Math.random() * 3).toFixed(2));
+        const price =(Math.random() * 3).toFixed(2);
         menu.push({
             //name: random(constants.products[preference]),
             name: preference,

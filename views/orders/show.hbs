@@ -19,16 +19,16 @@
                 {{#each order.orderMenu}}
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div class="div-content text-left">
-                        <h6 class="my-0">{{this.product.pref}}</h6>
+                        <h6 class="my-0">{{this.name}}</h6>
                     </div>
                     <div class="div-content text-center">
-                        <span class="mx-auto col-3 text-muted">{{this.product.price}}</span>
+                        <span class="mx-auto col-3 text-muted">{{this.price}}</span>
                     </div>
                     <div class="div-content text-center">
-                        <span class="mx-auto col-3 text-muted">{{this.unit}}</span>
+                        <span class="mx-auto col-3 text-muted">{{this.units}}</span>
                     </div>
                     <div class="div-content text-right">
-                        <span class="h6">{{mult this.product.price this.unit}}</span>
+                        <span class="h6">{{mult this.price this.units}}</span>
                     </div>
                 </li>
                 {{/each}}

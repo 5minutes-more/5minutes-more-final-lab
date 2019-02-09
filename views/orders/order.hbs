@@ -7,11 +7,7 @@
     <form action="/orders/{{place.id}}/order" method="post" class="form">
     <div class="card card-image jumbotronBackground">
       <div class='checkboxes-container fav-place m-3'>
-        <div class='control-group'>
-          <input class='red-heart-checkbox' id='red-check2' type='checkbox' name="favoriteBar" value="{{place.id}}">
-          <label for='red-check2'>
-          </label>
-        </div>
+        <button class="fav-btn" type="button" value="{{place.id}}" id="fav-btn">Favorito</button>
       </div>
       <div class="text-white text-center rgba-stylish-strong py-5 px-4">
         <div class="py-5">
@@ -24,9 +20,9 @@
     <!-- Jumbotron -->
 
     <div class="list-group">
-      {{#each place.completeMenu }}
-      <li class="list-group-item d-flex justify-content-between align-items-center"> {{this.pref}}<span class="badge badge-primary badge-pill">{{this.price}}</span>
-        <input name="units-{{this.pref}}" type="number" min="0" max="20" placeholder="uds" style="width: 50px">
+      {{#each place.menu }}
+      <li class="list-group-item d-flex justify-content-between align-items-center"> {{this.name}}<span class="badge badge-primary badge-pill">{{this.price}}</span>
+        <input name="units-{{this.name}}" type="number" min="0" max="20" placeholder="uds" style="width: 50px">
       </li>
       {{/each}}
     </div>
@@ -34,6 +30,9 @@
   <button type="submit" class="btn btn-primary">Hacer Pedido</button>
   </form>
 
-  {{>map }}
+  {{!-- {{>map }} --}}
 
 </article>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/js/fav.js"></script>

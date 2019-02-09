@@ -70,3 +70,18 @@ module.exports.doDelete = (req, res, next) => {
     .catch(error => next(error));
 }
 
+module.exports.favBar = (req, res, next) => {
+  const { restaurantId } = req.params;
+  User.findByIdAndUpdate(req.user.id, { $set: { favBar: restaurantId } }, { new: true })
+    .then(user => {
+      if (user) {
+        res.json({
+          OK: true,
+        })
+      } else {
+        next(createError(404, 'User not found'));
+      }
+    })
+    .catch(error => next(error));
+}
+
