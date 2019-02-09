@@ -8,13 +8,13 @@
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
           </div>
-          <input type="text" id="latitude" class="form-control" name="latitude" placeholder="Latitude" />
+          <input type="text" id="latitude" class="form-control" name="latitude" value="{{session.origin.coordinates.[0]}}" placeholder="Latitude" />
         </div>
         <div class="input-group mb-2">
           <div class="input-group-prepend">
             <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
           </div>
-          <input type="text" id="longitude" class="form-control" name="longitude" placeholder="Longitude" />
+          <input type="text" id="longitude" class="form-control" name="longitude" value="{{session.origin.coordinates.[1]}}" placeholder="Longitude" />
         </div>
       </div>
       <input id="pac-input" class="controls form-control mt-3 shadow-lg" style="width: 400px;" type="text" placeholder="Search Box">
