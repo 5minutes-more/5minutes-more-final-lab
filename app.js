@@ -14,11 +14,13 @@ const constants = require('./constants');
 require('./configs/db.config');
 require('./configs/hbs.config');
 require('./configs/passport.config');
+require('./configs/paypal.config');
 
 const usersRouter = require('./routes/users.routes');
 const sessionsRouter = require('./routes/sessions.routes');
 const placesRouter = require('./routes/places.routes');
 const ordersRouter = require('./routes/orders.routes')
+const paymentsRouter = require('./routes/orders.routes')
 
 const app = express();
 
@@ -65,6 +67,11 @@ app.use('/sessions', sessionsRouter);
 app.use('/places', placesRouter);
 app.use('/orders',ordersRouter )
 app.use('/', (req, res, next) => res.redirect('/places'));
+
+
+//Paypal
+
+
 
 
 // catch 404 and forward to error handler
