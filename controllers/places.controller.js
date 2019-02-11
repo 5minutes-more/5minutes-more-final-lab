@@ -10,12 +10,15 @@ const placesServices = require('../services/places.service');
 module.exports.main = (req, res, next) => {
   const lat = req.user.origin.coordinates[1];
   const lng = req.user.origin.coordinates[0];
+  //promise.all
   placesServices.find(lat, lng)
     .then(restaurants => res.render("places/main", { restaurants }))
     .catch(error => next(error));
 }
 
 module.exports.order = (req, res, next) => {
+  console.log("body =>", req.body)
+  console.log("params =>", req.params)
   Place.findOne({ placeId: req.params.restaurantId})
     .then(place => {
       if (place) {
