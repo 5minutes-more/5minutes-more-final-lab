@@ -197,3 +197,12 @@ li{
 .div-content {
   width: 25%;
 }
+
+.main-jumbotron {
+  background-image: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.2),
+    rgba(21, 29, 78, 0.6)
+  ),
+  url(https://images.unsplash.com/photo-1526127230111-0197afe94d72?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1200&h=500&fit=crop&ixid=eyJhcHBfaWQiOjF9);
+}
