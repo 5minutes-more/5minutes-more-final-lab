@@ -22,20 +22,6 @@ router.get('/edit',
   authMiddleware.isAuthenticated,
   usersController.edit);
 
-// router.post('/edit',
-//   authMiddleware.isAuthenticated,
-//   usersController.doEdit);
-
-// router.get('/main',
-//   authMiddleware.isAuthenticated,
-//   userMiddleware.isRegistered,
-//   usersController.main);
-
-// router.post('/main',
-//   authMiddleware.isAuthenticated,
-//   userMiddleware.isRegistered,
-//   usersController.doMain);
-
 router.post('/:id/delete',
   authMiddleware.isAuthenticated,
   authMiddleware.checkRole(constants.ROLE_ADMIN),

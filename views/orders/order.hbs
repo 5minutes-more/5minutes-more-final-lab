@@ -2,12 +2,12 @@
   <div class="container">
 
     {{> nav }}
-
+    
     <!-- Jumbotron -->
     <form action="/orders/{{place.id}}/order" method="post" class="form">
     <div class="card card-image jumbotronBackground">
       <div class='checkboxes-container fav-place m-3'>
-        <button class="fav-btn" type="button" value="{{place.id}}" id="fav-btn">Favorito</button>
+        <button class="fav-btn {{isFavBar session.favBar place.id}}" type="button" value="{{place.id}}" id="fav-btn" >Favorito</button>
       </div>
       <div class="text-white text-center rgba-stylish-strong py-5 px-4">
         <div class="py-5">
