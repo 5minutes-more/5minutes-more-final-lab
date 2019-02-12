@@ -18,10 +18,18 @@ module.exports = (hbs) => {
     })
 
     hbs.registerHelper('isFavBar', (user, place) => {
-        if (user.toString() === place){
+        if (user === place){
             return "favorite";
         } else {
             return "";
+        }
+    })
+
+    hbs.registerHelper('isFavMenu', (user, place) => {
+        if (user === place){
+            return "";
+        } else {
+            return "hide-button";
         }
     })
 }

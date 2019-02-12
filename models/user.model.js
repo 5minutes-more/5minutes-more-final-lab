@@ -36,11 +36,7 @@ const userSchema = new mongoose.Schema({
         // required: 'You need to populate at least one preference'
     },
     fav: {
-        menu: [{
-            name: String,
-            price: Number,
-            units: Number
-        }],
+        menu: [{}],
         bar: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Place'

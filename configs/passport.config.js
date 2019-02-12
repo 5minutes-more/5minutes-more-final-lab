@@ -8,7 +8,7 @@ passport.serializeUser((user, next) => {
 
 passport.deserializeUser((id, next) => {
   User.findById(id)
-    .populate('fav')
+    .populate('fav.bar')
     .then(user => {
       next(null, user);
     })

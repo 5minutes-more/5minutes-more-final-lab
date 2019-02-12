@@ -15,7 +15,6 @@ module.exports.main = (req, res, next) => {
   User.findById(req.user.id)
     .populate('fav.bar')
     .then(user => {
-      console.log("favoriteRestaurant => ",user.fav.bar)
       favoriteRestaurant = user.fav.bar;
       return placesServices.find(lat, lng)
         .then(restaurants => res.render("places/main", { restaurants, favoriteRestaurant }))

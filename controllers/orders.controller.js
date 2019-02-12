@@ -57,6 +57,5 @@ function createOrder(place, user, body) {
     orderMenu: menu,
     total: Number(total.toFixed(2))
   })
-  console.info("order =>", order);
   return order;
 }

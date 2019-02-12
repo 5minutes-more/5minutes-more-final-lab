@@ -71,6 +71,7 @@ module.exports.doDelete = (req, res, next) => {
 }
 
 module.exports.doFav = (req, res, next) => {
+
   const { restaurantId } = req.params;
   User.findByIdAndUpdate(req.user.id, { $set: { "fav.bar": restaurantId } }, { new: true })
     .then(user => {
@@ -85,3 +86,20 @@ module.exports.doFav = (req, res, next) => {
     .catch(error => next(error));
 }
 
+module.exports.doMenuFav = (req, res, next) => {
+  console.info(req.params.order)
+  const menu = req.params.order.split(',');
+  console.log(menu)
+
+  User.findByIdAndUpdate(req.user.id, { $set: { "fav.menu": menu } }, { new: true })
+    .then(user => {
+      if (user) {
+        res.json({
+          OK: true,
+        })
+      } else {
+        next(createError(404, 'User not found'));
+      }
+    })
+    .catch(error => next(error));
+}
