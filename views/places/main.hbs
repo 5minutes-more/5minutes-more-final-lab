@@ -1,15 +1,15 @@
 <div class="container">
   {{> nav }}
-{{#if }}
+
   <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark mt-5 main-jumbotron">
     <div class="col-md-6 px-0">
-      <h1 class="display-4 font-italic"><span class="badge badge-warning">3.5</span> {{Restaurant.name}}Nombre del restaurante</h1>
-      <p class="lead my-3">{{restaurant.vicinity}}Calle pepito grillo, 4</p>
+      <h1 class="display-4 font-italic"><span class="badge badge-warning">{{favoriteRestaurant.rating}}</span> {{favoriteRestaurant.name}}</h1>
+      <p class="lead my-3">{{favoriteRestaurant.vicinity}}</p>
       <p class="lead my-3"><i class="fas fa-cookie-bite"></i> Comida</p>
       <p class="lead my-3"><i class="fas fa-mug-hot"></i> Bebida</p>
     </div>
     <div class="d-flex justify-content-end">
-      <a class="btn btn-primary btn-lg" href="/places/{{restaurant.place_id}}/order">Pedido rápido</a>
+      <a class="btn btn-primary btn-lg" href="places/{{favoriteRestaurant.placeId}}">Pedido rápido</a>
     </div>
   </div>
 

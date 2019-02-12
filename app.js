@@ -54,6 +54,7 @@ app.use(passport.session());
 app.use((req, res, next) => {
   res.locals.allPreferences = constants.PREF_CONST;
   res.locals.session = req.user;
+  // console.log(req.user);
   next();
 })
 

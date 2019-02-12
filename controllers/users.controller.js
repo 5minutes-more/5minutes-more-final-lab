@@ -70,9 +70,9 @@ module.exports.doDelete = (req, res, next) => {
     .catch(error => next(error));
 }
 
-module.exports.favBar = (req, res, next) => {
+module.exports.doFav = (req, res, next) => {
   const { restaurantId } = req.params;
-  User.findByIdAndUpdate(req.user.id, { $set: { favBar: restaurantId } }, { new: true })
+  User.findByIdAndUpdate(req.user.id, { $set: { "fav.bar": restaurantId } }, { new: true })
     .then(user => {
       if (user) {
         res.json({

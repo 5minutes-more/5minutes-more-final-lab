@@ -41,7 +41,7 @@ router.post('/:id/delete',
   authMiddleware.checkRole(constants.ROLE_ADMIN),
   usersController.doDelete);
 
-router.post('/fav/:restaurantId', usersController.favBar);
+router.post('/fav/:restaurantId', usersController.doFav);
 
 
 module.exports = router;
