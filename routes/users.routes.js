@@ -28,7 +28,7 @@ router.post('/:id/delete',
   usersController.doDelete);
 
 router.post('/fav/:restaurantId', usersController.doFav);
-router.post('/fav/:order/order', usersController.doMenuFav);
+router.post('/fav/:restaurantId/order', usersController.doMenuFav);
 
 
 module.exports = router;

@@ -87,11 +87,11 @@ module.exports.doFav = (req, res, next) => {
 }
 
 module.exports.doMenuFav = (req, res, next) => {
-  console.info(req.params.order)
-  const menu = req.params.order.split(',');
-  console.log(menu)
+  const { order } = req.body;
 
-  User.findByIdAndUpdate(req.user.id, { $set: { "fav.menu": menu } }, { new: true })
+  console.log("req.body => ", req.body);
+
+  User.findByIdAndUpdate(req.user.id, { $set: { "fav.menu": order } }, { new: true })
     .then(user => {
       if (user) {
         res.json({
