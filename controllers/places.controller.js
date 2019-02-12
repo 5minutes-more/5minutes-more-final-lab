@@ -10,8 +10,16 @@ const placesServices = require('../services/places.service');
 module.exports.main = (req, res, next) => {
   const lat = req.user.origin.coordinates[1];
   const lng = req.user.origin.coordinates[0];
-  placesServices.find(lat, lng)
-    .then(restaurants => res.render("places/main", { restaurants }))
+  let favoriteRestaurant;
+  //promise.all
+  User.findById(req.user.id)
+    .populate('fav.bar')
+    .then(user => {
+      console.log("favoriteRestaurant => ",user.fav.bar)
+      favoriteRestaurant = user.fav.bar;
+      return placesServices.find(lat, lng)
+        .then(restaurants => res.render("places/main", { restaurants, favoriteRestaurant }))
+    })
     .catch(error => next(error));
 }
 

@@ -35,9 +35,16 @@ const userSchema = new mongoose.Schema({
         default: []
         // required: 'You need to populate at least one preference'
     },
-    favBar: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Place'
+    fav: {
+        menu: [{
+            name: String,
+            price: Number,
+            units: Number
+        }],
+        bar: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Place'
+        }
     }
 }, { timestamps: true });
 
