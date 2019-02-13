@@ -4,7 +4,7 @@ module.exports = {
     PREF_CONST: [
         {
             id: "coffee",
-            name: "Cofee"
+            name: "Coffee"
         },
         {
             id: "glutenfree",

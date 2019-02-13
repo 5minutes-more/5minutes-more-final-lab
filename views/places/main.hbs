@@ -1,28 +1,38 @@
 <div class="container">
   {{> nav }}
-  <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark mt-5 main-jumbotron">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 font-italic"><span class="badge badge-warning">{{favoriteRestaurant.rating}}</span> {{favoriteRestaurant.name}}</h1>
-      <p class="lead my-3">{{favoriteRestaurant.vicinity}}</p>
-      {{!-- <p class="lead my-3"><i class="fas fa-cookie-bite"></i> Comida</p>
+  {{#if favoriteRestaurant}}
+  <form action="/orders/{{favoriteRestaurant.id}}/expressOrder" method="post">
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark mt-5 main-jumbotron">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 font-italic"><span class="badge badge-warning">{{favoriteRestaurant.rating}}</span>
+          {{favoriteRestaurant.name}}</h1>
+        <p class="lead my-3">{{favoriteRestaurant.vicinity}}</p>
+        {{!-- <p class="lead my-3"><i class="fas fa-cookie-bite"></i> Comida</p>
       <p class="lead my-3"><i class="fas fa-mug-hot"></i> Bebida</p> --}}
-      {{#each session.fav.menu.orderMenu}}
-      <p class="lead my-3"><i class="fas fa-mug-hot"></i> {{this.units}} units of {{this.name}} costing {{this.price}}</p> 
-      {{/each}}
+        {{#each session.fav.menu.orderMenu}}
+        <p class="lead my-3"> {{this.units}} <i class="{{clasif-food this.name}}"></i> {{this.name}} <span
+            class="badge badge-light">{{this.price}} €</span></p>
+        {{/each}}
+      </div>
+      {{#if session.fav.menu.orderMenu}}
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary btn-lg">Pedido rápido</button>
+      </div>
+      {{/if}}
     </div>
-    <div class="d-flex justify-content-end">
-      <a class="btn btn-primary btn-lg" href="places/{{favoriteRestaurant.placeId}}">Pedido rápido</a>
-    </div>
-  </div>
 
-  <div class="container-fluid">
+  </form>
+  {{/if}}
+
+  <div class="container">
     <h2 class="mt-3">Near coffee shops</h2>
     <div class="row flex-row flex-nowrap scrolling-wrapper">
       {{#each restaurants as |restaurant|}}
       {{#if restaurant.opening_hours.open_now}}
       <div class="mr-1">
-        <div class="card m-2" style="width: 22rem;">
-          <img class="card-img-top" src="https://source.unsplash.com/random/1200x500/?coffee,breakfast"
+        <div class="card mr-2" style="width: 22rem;">
+          <img class="card-img-top"
+            src="https://source.unsplash.com/random/1200x500/?coffee,breakfast&sig={{randomImage}}"
             alt="Card image cap">
           <div class="card-body">
             <h5 class="card-title"><span class="badge badge-pill badge-warning">{{restaurant.rating}}</span>
@@ -36,29 +46,21 @@
       {{/if}}
       {{/each}}
     </div>
-    <h2 class="mt-3">what do you want</h2>
+
   </div>
 
   <div class="container mx-auto">
+    <h2 class="mt-3">what do you want</h2>
     <div class="row mx-auto">
+      {{#each preferences}}
       <div class="mx-auto col-lg-3">
         <img class="rounded-circle"
           src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
           alt="Generic placeholder image" width="140" height="140">
-        <h2>Heading</h2>
+        <h2>{{this.name}}</h2>
       </div>
-      <div class="mx-auto col-lg-3">
-        <img class="rounded-circle"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-          alt="Generic placeholder image" width="140" height="140">
-        <h2>Heading</h2>
-      </div>
-      <div class="mx-auto col-lg-3">
-        <img class="rounded-circle"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-          alt="Generic placeholder image" width="140" height="140">
-        <h2>Heading</h2>
-      </div>
+    {{/each}}
     </div>
   </div>
+
 </div>

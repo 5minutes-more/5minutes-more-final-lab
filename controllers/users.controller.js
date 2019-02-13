@@ -73,7 +73,7 @@ module.exports.doDelete = (req, res, next) => {
 module.exports.doFav = (req, res, next) => {
 
   const { restaurantId } = req.params;
-  User.findByIdAndUpdate(req.user.id, { $set: { "fav.bar": restaurantId } }, { new: true })
+  User.findByIdAndUpdate(req.user.id, { $set: { "fav.bar": restaurantId }, $unset: { "fav.menu": "" } }, { new: true })
     .then(user => {
       if (user) {
         res.json({
@@ -88,8 +88,6 @@ module.exports.doFav = (req, res, next) => {
 
 module.exports.doMenuFav = (req, res, next) => {
   const { order } = req.body;
-
-  console.log("req.body => ", req.body);
 
   User.findByIdAndUpdate(req.user.id, { $set: { "fav.menu": order } }, { new: true })
     .then(user => {

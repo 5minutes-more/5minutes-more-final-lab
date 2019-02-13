@@ -3,30 +3,32 @@
 
     {{> nav }}
 
-    
+
     <!-- Jumbotron -->
     <form action="/orders/{{place.id}}/order" method="post" class="form">
-    <div class="card card-image jumbotronBackground">
-      <div class='checkboxes-container fav-place m-3'>
-        <button class="fav-btn {{isFavBar session.fav.bar.id place.id}}" type="button" value="{{place.id}}" id="fav-btn" >Favorito</button>
-      </div>
-      <div class="text-white text-center rgba-stylish-strong py-5 px-4">
-        <div class="py-5">
-          <h2 class="card-title h2 my-4 py-2">{{place.name}}</h2>
-          <p class="mb-4 pb-2 px-md-5 mx-md-5">{{place.vicinity}}</p>
-          <span class="badge badge-pill badge-warning">{{place.rating}}</span>
+      <div class="card card-image jumbotronBackground">
+        <div class='checkboxes-container fav-place m-3'>
+          <button class="fav-btn {{isFavBar session.fav.bar.id place.id}}" type="button" value="{{place.id}}"
+            id="fav-btn">Favorito</button>
+        </div>
+        <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+          <div class="py-5">
+            <h2 class="card-title h2 my-4 py-2">{{place.name}}</h2>
+            <p class="mb-4 pb-2 px-md-5 mx-md-5">{{place.vicinity}}</p>
+            <span class="badge badge-pill badge-warning">{{place.rating}}</span>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- Jumbotron -->
+      <!-- Jumbotron -->
 
-    <div class="list-group">
-      {{#each place.menu }}
-      <li class="list-group-item d-flex justify-content-between align-items-center"> {{this.name}}<span class="badge badge-primary badge-pill">{{this.price}}</span>
-        <input name="units-{{this.name}}" type="number" min="0" max="20" placeholder="uds" style="width: 50px">
-      </li>
-      {{/each}}
-    </div>
+      <div class="list-group">
+        {{#each place.menu }}
+        <li class="list-group-item d-flex justify-content-between align-items-center"> {{this.name}}<span
+            class="badge badge-primary badge-pill">{{this.price}}</span>
+          <input name="units-{{this.name}}" type="number" min="0" max="20" placeholder="uds" style="width: 50px">
+        </li>
+        {{/each}}
+      </div>
   </div>
   <button type="submit" class="btn btn-primary">Hacer Pedido</button>
   </form>
