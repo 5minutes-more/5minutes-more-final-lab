@@ -1,4 +1,4 @@
-class Map {
+class MyMap {
     constructor(containerDomElement) {
       this.containerDomElement = containerDomElement;
       this.googleMap = null;

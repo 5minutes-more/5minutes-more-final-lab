@@ -7,6 +7,11 @@ const axios = require("axios");
 const constants = require('../constants');
 const placesServices = require('../services/places.service');
 
+module.exports.doQuery = (req, res, next) => {
+  console.log(req.body);
+  res.render('places/query')
+}
+
 module.exports.main = (req, res, next) => {
   const lat = req.user.origin.coordinates[1];
   const lng = req.user.origin.coordinates[0];

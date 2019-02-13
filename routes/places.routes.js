@@ -14,4 +14,9 @@ router.get('/:restaurantId',
   userMiddleware.isRegistered,
   placesController.order);
 
+router.post('/query',
+authMiddleware.isAuthenticated,
+userMiddleware.isRegistered,
+placesController.doQuery);
+
 module.exports = router;  
