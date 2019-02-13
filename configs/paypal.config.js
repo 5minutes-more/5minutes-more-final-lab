@@ -1,4 +1,4 @@
-var express = require('express'); 
+
 var paypal = require('paypal-rest-sdk');
 const PAYPAL_KEY_ID = process.env.PAYPAL_KEY_ID;
 const PAYPAL_KEY_SECRET = process.env.PAYPAL_KEY_SECRET;

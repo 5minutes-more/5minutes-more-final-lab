@@ -5,7 +5,7 @@ function initMap() {
     return;
   }
 
-  window.map = new Map(domElement);
+  window.map = new MyMap(domElement);
   window.map.init();
 
   //search box

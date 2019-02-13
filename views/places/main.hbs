@@ -48,19 +48,25 @@
     </div>
 
   </div>
-
+<form action="/places/query" method="post">
   <div class="container mx-auto">
     <h2 class="mt-3">what do you want</h2>
     <div class="row mx-auto">
       {{#each preferences}}
-      <div class="mx-auto col-lg-3">
-        <img class="rounded-circle"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-          alt="Generic placeholder image" width="140" height="140">
-        <h2>{{this.name}}</h2>
-      </div>
+      <div class="inputGroup">
+        <div>
+          <input id="option-{{this.id}}" name="preferences" value="{{this.id}}" type="checkbox" {{hasPreference ../session this preferences }}/>
+          <label for="option-{{this.id}}">{{this.name}}</label>
+                  </div>
+        </div>
     {{/each}}
     </div>
   </div>
+  <div>
+  <button type="submit" class="btn btn-primary btn-lg">Pedido rápido</button>
+  </div>
+  </form>
 
+  
 </div>
+
