@@ -1,43 +1,41 @@
 <div class="container">
   <article id="create-user">
-    <form action="/users/create" method="post" class="form">
+    <form action="/users/create" method="post">
       <div class="container">
-        <h2 class="mb-3">Find in the map your position:</h2>
-
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+        <div class="row">
+          <div class="col">
+            <div class="container">
+              <h2 class="mb-3 mt-3">Find in the map your position:</h2>
+              <input hidden type="text" id="latitude" class="form-control" name="latitude"
+                value="{{session.origin.coordinates.[0]}}" placeholder="Latitude" />
+              <input hidden type="text" id="longitude" class="form-control" name="longitude"
+                value="{{session.origin.coordinates.[1]}}" placeholder="Longitude" />
+            </div>
+            <input id="pac-input" class="controls form-control mt-3 shadow-lg" style="width: 400px;" type="text"
+              placeholder="Search Box">
+            {{> map}}
           </div>
-          <input type="text" id="latitude" class="form-control" name="latitude" value="{{session.origin.coordinates.[0]}}" placeholder="Latitude" />
-        </div>
-        <div class="input-group mb-2">
-          <div class="input-group-prepend">
-            <span class="input-group-text"> <i class="fas fa-map-marker"></i> </span>
+          <div class="col">
+            <div class="container">
+              <h2 class="mb-3 mt-3">Choose your breakfast preferences:</h2>
+              <div class="d-flex flex-wrap">
+                {{#each allPreferences as |preference| }}
+                <div class="inputGroup m-3 mx-auto">
+                  <input id="option-{{preference.id}}" name="preferences" value="{{preference.id}}" type="checkbox"
+                    {{hasPreference ../session preference user.preferences }} />
+                  <label id="{{preference.id}}" for="option-{{preference.id}}">{{preference.name}}</label>
+                </div>
+                {{/each}}
+              </div>
+              <div class="form-actions container">
+                <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+              </div>
+            </div>
           </div>
-          <input type="text" id="longitude" class="form-control" name="longitude" value="{{session.origin.coordinates.[1]}}" placeholder="Longitude" />
         </div>
-      </div>
-      <input id="pac-input" class="controls form-control mt-3 shadow-lg" style="width: 400px;" type="text" placeholder="Search Box">
-      <div class="container">
-        {{> map}}
-      </div>
-      <div class="container">
-        <h2 class="mb-3 mt-3">Choose your breakfast preferences:</h2>
-       <div class="d-flex flex-wrap">
-        {{#each allPreferences as |preference| }}
-        <div class="inputGroup m-3 mx-auto">    
-          <input id="option-{{preference.id}}" name="preferences" value="{{preference.id}}" type="checkbox" {{hasPreference ../session preference user.preferences }}/>
-          <label for="option-{{preference.id}}">{{preference.name}}</label>
-        </div>
-        {{/each}}
-        </div>
-      </div>
-      <div class="form-actions container">
-        <button class="btn btn-primary btn-block" type="submit">Sign up</button>
       </div>
     </form>
-    <script src="../../controllers/users.controller.js"></script>
   </article>
 </div>
 
-
+<script src="../../controllers/users.controller.js"></script>

@@ -95,7 +95,7 @@ function centerMapOnBrowser() {
         lat: Number(document.getElementById("latitude").value),
         lng: Number(document.getElementById("longitude").value)
       })
-      window.map.googleMap.setZoom(20);
+      window.map.googleMap.setZoom(16);
     }
 
   });

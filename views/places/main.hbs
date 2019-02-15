@@ -1,14 +1,16 @@
+<link rel='stylesheet' href='/stylesheets/main.css' />
+
+
 <div class="container">
   {{> nav }}
   {{#if favoriteRestaurant}}
   <form action="/orders/{{favoriteRestaurant.id}}/expressOrder" method="post">
     <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark mt-5 main-jumbotron">
       <div class="col-md-6 px-0">
-        <h1 class="display-4 font-italic"><span class="badge badge-warning">{{favoriteRestaurant.rating}}</span>
+        <h1 class="display-4"><span class="badge badge-warning">{{favoriteRestaurant.rating}}</span>
           {{favoriteRestaurant.name}}</h1>
         <p class="lead my-3">{{favoriteRestaurant.vicinity}}</p>
-        {{!-- <p class="lead my-3"><i class="fas fa-cookie-bite"></i> Comida</p>
-      <p class="lead my-3"><i class="fas fa-mug-hot"></i> Bebida</p> --}}
+
         {{#each session.fav.menu.orderMenu}}
         <p class="lead my-3"> {{this.units}} <i class="{{clasif-food this.name}}"></i> {{this.name}} <span
             class="badge badge-light">{{this.price}} €</span></p>
@@ -16,7 +18,7 @@
       </div>
       {{#if session.fav.menu.orderMenu}}
       <div class="d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary btn-lg">Pedido rápido</button>
+        <button type="submit" class="btn btn-primary btn-xl">Pedido rápido</button>
       </div>
       {{/if}}
     </div>
@@ -24,49 +26,56 @@
   </form>
   {{/if}}
 
-  <div class="container">
-    <h2 class="mt-3">Near coffee shops</h2>
-    <div class="row flex-row flex-nowrap scrolling-wrapper">
-      {{#each restaurants as |restaurant|}}
-      {{#if restaurant.opening_hours.open_now}}
-      <div class="mr-1">
-        <div class="card mr-2" style="width: 22rem;">
-          <img class="card-img-top"
-            src="https://source.unsplash.com/random/1200x500/?coffee,breakfast&sig={{randomImage}}"
-            alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title"><span class="badge badge-pill badge-warning">{{restaurant.rating}}</span>
-              {{restaurant.name}}</h5>
+<div>
+  <h2 class="mt-3 mb-3">Near coffee shops</h2>
+  <div class="row flex-row flex-nowrap scrolling-wrapper">
+    {{#each restaurants as |restaurant|}}
+    {{#if restaurant.opening_hours.open_now}}
+    <div class="container">
+      <div class="blog-card" style="background: url(https://source.unsplash.com/random/1200x500/?coffee,breakfast&sig={{randomImage}})">
+        <div class="title-content">
+          <h3>{{restaurant.name}}</h3>
+          <hr />
+          <div class="intro">{{restaurant.vicinity}}</div>
+        </div><!-- /.title-content -->
+        <div class="card-info">
+          <a href="/places/{{restaurant.place_id}}" class="btn btn-primary">Ver restaurante</a>
+        </div><!-- /.card-info -->
+        <div class="utility-info">
+          <ul class="utility-list">
+            <li><i class="far fa-star"></i> {{restaurant.rating}}</li>
+          </ul>
+        </div><!-- /.utility-info -->
+        <!-- overlays -->
+        <div class="gradient-overlay"></div>
+        <div class="color-overlay"></div>
+      </div><!-- /.blog-card -->
+    </div>
 
-            <p class="card-text">{{restaurant.vicinity}}</p>
-            <a href="/places/{{restaurant.place_id}}" class="btn btn-primary">Ver restaurante</a>
+    {{/if}}
+    {{/each}}
+  </div>
+
+  </div>
+  <form action="/places/query" method="post">
+  <h2 class="mt-3">what do you want</h2>
+    <div class="container mx-auto">
+      <div class="row mx-auto">
+        {{#each preferences}}
+        <div class="inputGroup m-3 mx-auto">
+          <div>
+            <input id="option-{{this.id}}" name="preferences" value="{{this.id}}" type="checkbox"
+              {{hasPreference ../session this preferences }} />
+            <label id="{{this.id}}" for="option-{{this.id}}">{{this.name}}</label>
           </div>
         </div>
+        {{/each}}
       </div>
-      {{/if}}
-      {{/each}}
     </div>
-
-  </div>
-<form action="/places/query" method="post">
-  <div class="container mx-auto">
-    <h2 class="mt-3">what do you want</h2>
-    <div class="row mx-auto">
-      {{#each preferences}}
-      <div class="inputGroup">
-        <div>
-          <input id="option-{{this.id}}" name="preferences" value="{{this.id}}" type="checkbox" {{hasPreference ../session this preferences }}/>
-          <label for="option-{{this.id}}">{{this.name}}</label>
-                  </div>
-        </div>
-    {{/each}}
+    <div>
+      <button type="submit" class="btn btn-primary btn-lg">Pedido rápido</button>
     </div>
-  </div>
-  <div>
-  <button type="submit" class="btn btn-primary btn-lg">Pedido rápido</button>
-  </div>
   </form>
 
-  
-</div>
 
+</div>

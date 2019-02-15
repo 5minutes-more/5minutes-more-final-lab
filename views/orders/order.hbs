@@ -1,43 +1,52 @@
+<link rel='stylesheet' href='/stylesheets/order.css' />
+
 <article id="order-page">
   <div class="container">
-
     {{> nav }}
+  
 
-
-    <!-- Jumbotron -->
-    <form action="/orders/{{place.id}}/order" method="post" class="form">
-      <div class="card card-image jumbotronBackground">
-        <div class='checkboxes-container fav-place m-3'>
-          <button class="fav-btn {{isFavBar session.fav.bar.id place.id}}" type="button" value="{{place.id}}"
-            id="fav-btn">Favorito</button>
-        </div>
-        <div class="text-white text-center rgba-stylish-strong py-5 px-4">
-          <div class="py-5">
-            <h2 class="card-title h2 my-4 py-2">{{place.name}}</h2>
-            <p class="mb-4 pb-2 px-md-5 mx-md-5">{{place.vicinity}}</p>
-            <span class="badge badge-pill badge-warning">{{place.rating}}</span>
-            <input hidden type="text" id="latitude" name="latitude"  value="{{place.location.coordinates.[1]}}">
-            <input hidden type="text" id="longitude" name="longitude" value="{{place.location.coordinates.[0]}}">
+  <div class=" mt-5 row">
+    <div class="col">
+      <!-- Jumbotron -->
+      <form action="/orders/{{place.id}}/order" method="post" class="form">
+        <div class="card card-image jumbotronBackground">
+          <div class='checkboxes-container fav-place m-3'>
+            <button class="btn btn-primary fav-btn {{isFavBar session.fav.bar.id place.id}}" type="button" value="{{place.id}}"
+              id="fav-btn">Favorito</button>
+          </div>
+          <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+            <div class="py-5">
+              <h2 class="card-title h2 my-4 py-2">{{place.name}}</h2>
+              <p class="mb-4 pb-2 px-md-5 mx-md-5">{{place.vicinity}}</p>
+              <span class="badge badge-pill badge-warning">{{place.rating}}</span>
+              <input hidden type="text" id="latitude" name="latitude" value="{{place.location.coordinates.[1]}}">
+              <input hidden type="text" id="longitude" name="longitude" value="{{place.location.coordinates.[0]}}">
+            </div>
           </div>
         </div>
-      </div>
-      <!-- Jumbotron -->
+        <!-- Jumbotron -->
 
-      <div class="list-group">
-        {{#each place.menu }}
-        <li class="list-group-item d-flex justify-content-between align-items-center"> {{this.name}}<span
-            class="badge badge-primary badge-pill">{{this.price}}</span>
-          <input name="units-{{this.name}}" type="number" min="0" max="20" placeholder="uds" style="width: 50px">
-        </li>
-        {{/each}}
-      </div>
+        <div class="mt-3 list-group">
+          {{#each place.menu }}
+          <li class="list-group-item d-flex justify-content-between align-items-center"> {{this.name}}<span
+              class="badge badge-primary badge-pill">{{this.price}}</span>
+            <input name="units-{{this.name}}" type="number" min="0" max="20" placeholder="uds" style="width: 50px">
+          </li>
+          {{/each}}
+        </div>
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Hacer Pedido</button>
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      {{>map }}
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary">Hacer Pedido</button>
-  </form>
-
-  {{>map }}
-
 </article>
+</div>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/fav.js"></script>
+
+
