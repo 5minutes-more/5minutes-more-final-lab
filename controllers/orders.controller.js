@@ -46,14 +46,15 @@ module.exports.doExpressOrder = (req, res, next) => {
 
 function createOrder(place, user, body) {
   const values = Object.values(body);
+  console.log(values);
   const menu = [];
 
   place.menu.forEach((product, index) => {
-    if (values[index] != '') {
+    if (values[index+2] != '') {
       menu.push({
         name: product.name,
         price: product.price,
-        units: values[index]
+        units: values[index+2]
       })
     }
   })
