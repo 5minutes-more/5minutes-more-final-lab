@@ -51,13 +51,9 @@ function initMap() {
     
   })
 
-
-
   if (navigator.geolocation) {
     centerMapOnBrowser();
   }
-
-
   // means we are on create users page!
   if (document.getElementById("create-user")) {
     window.map.onClick((event) => {
@@ -71,9 +67,12 @@ function initMap() {
 
   //means we are on order page!  
   } else if (document.getElementById("order-page")){
-    addMarker(document.getElementById("lat").value,document.getElementById("lng").value);
-    showAllMarkers();
-  } else {
+    window.map.addMarker(Number(document.getElementById("latitude").value),Number(document.getElementById("longitude").value));
+    window.map.showAllMarkers();
+    window.map.googleMap.setCenter({
+      lat: Number(document.getElementById("latitude").value),
+      lng: Number(document.getElementById("longitude").value)
+    })
   }
 }
 
@@ -89,7 +88,16 @@ function centerMapOnBrowser() {
     // means we are on create users page!
     if (document.getElementById("create-user")) {
       addMarkerAndUpateForm(position.coords.latitude, position.coords.longitude);
+    } else if (document.getElementById("order-page")){
+      window.map.addMarker(Number(document.getElementById("latitude").value),Number(document.getElementById("longitude").value));
+      window.map.showAllMarkers();
+      window.map.googleMap.setCenter({
+        lat: Number(document.getElementById("latitude").value),
+        lng: Number(document.getElementById("longitude").value)
+      })
+      window.map.googleMap.setZoom(20);
     }
+
   });
 }
 

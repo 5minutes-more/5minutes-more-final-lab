@@ -16,6 +16,8 @@
             <h2 class="card-title h2 my-4 py-2">{{place.name}}</h2>
             <p class="mb-4 pb-2 px-md-5 mx-md-5">{{place.vicinity}}</p>
             <span class="badge badge-pill badge-warning">{{place.rating}}</span>
+            <input hidden type="text" id="latitude" name="latitude"  value="{{place.location.coordinates.[1]}}">
+            <input hidden type="text" id="longitude" name="longitude" value="{{place.location.coordinates.[0]}}">
           </div>
         </div>
       </div>
@@ -33,7 +35,7 @@
   <button type="submit" class="btn btn-primary">Hacer Pedido</button>
   </form>
 
-  {{!-- {{>map }} --}}
+  {{>map }}
 
 </article>
 

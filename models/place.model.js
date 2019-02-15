@@ -12,7 +12,7 @@ const placeSchema = new mongoose.Schema({
     photo: String,
     location: {
         type: {type: String, default: 'Point'},
-        coordinates: [Number],
+        coordinates: [Object],
     },
     vicinity: String,
     preferences:  {

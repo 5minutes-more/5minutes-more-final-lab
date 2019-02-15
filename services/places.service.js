@@ -1,7 +1,7 @@
 const axios = require('axios');
 const API_PATH = 'https://maps.googleapis.com/maps/api/place';
 const API_KEY = process.env.PLACES_KEY;
-const FIND_RADIUS = 5000;
+const FIND_RADIUS = 1000;
 const DEFAULT_PLACE_EMAIL = 'a.lucia.cazorla@gmail.com';
 const constants = require('../constants');
 
@@ -10,7 +10,6 @@ module.exports.find = (lat, lng) => {
         params: {
             location: `${lat},${lng}`,
             radius: FIND_RADIUS,
-            type: 'bar',
             keyword: 'breakfast',
             key: API_KEY
         }
@@ -30,6 +29,7 @@ module.exports.get = (placeId) => {
     }).then(response => {
         const place = response.data.result;
         const info = randomizeMenu();
+        const location = [place.geometry.location.lng,place.geometry.location.lat]
         return Promise.resolve({
             placeId: placeId,
             name: place.name,
@@ -38,7 +38,7 @@ module.exports.get = (placeId) => {
             email: DEFAULT_PLACE_EMAIL,
             preferences: info.preferences,
             menu: info.menu,
-            location: place.geometry.location,
+            "location.coordinates": location,
           })
     });
 }

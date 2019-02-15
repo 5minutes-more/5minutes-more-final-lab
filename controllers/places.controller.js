@@ -1,4 +1,3 @@
-
 const createError = require('http-errors');
 const mongoose = require('mongoose');
 const User = require('../models/user.model');
@@ -8,8 +7,26 @@ const constants = require('../constants');
 const placesServices = require('../services/places.service');
 
 module.exports.doQuery = (req, res, next) => {
-  console.log(req.body);
-  res.render('places/query')
+  console.log("req.user => ", req.user.origin)
+  Place.find({
+      "preferences": {
+        $all: req.body.preferences
+      }
+    }, {
+      location: {
+        '$near': {
+          '$geometry': {
+            type: 'Point',
+            coordinates: req.user.origin.coordinates
+          },
+          '$maxDistance': 1000
+        }
+      }
+    })
+    .then(places => res.render("places/query", {
+      places
+    }))
+    .catch(error => next)
 }
 
 module.exports.main = (req, res, next) => {
@@ -25,21 +42,30 @@ module.exports.main = (req, res, next) => {
       favoriteRestaurant = user.fav.bar;
       favoriteMenu = user.fav.menu;
       return placesServices.find(lat, lng)
-        .then(restaurants => res.render("places/main", { preferences, restaurants, favoriteRestaurant, favoriteMenu }))
+        .then(restaurants => res.render("places/main", {
+          preferences,
+          restaurants,
+          favoriteRestaurant,
+          favoriteMenu
+        }))
     })
     .catch(error => next(error));
 }
 
 module.exports.order = (req, res, next) => {
-  Place.findOne({ placeId: req.params.restaurantId})
+  Place.findOne({
+      placeId: req.params.restaurantId
+    })
     .then(place => {
       if (place) {
         return Promise.resolve(place);
       } else {
         return placesServices.get(req.params.restaurantId)
-          .then(place  => new Place(place).save());
+          .then(place => new Place(place).save());
       }
     })
-    .then(place => res.render('orders/order', { place }))
+    .then(place => res.render('orders/order', {
+      place
+    }))
     .catch(error => next(error));
 }

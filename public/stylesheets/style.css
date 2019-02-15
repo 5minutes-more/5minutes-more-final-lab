@@ -23,7 +23,42 @@ a {
 
 /* Checkboxes */
 
-.inputGroup {
+input[type=checkbox] {
+  display:none;
+  }
+   
+  input[type=checkbox] + label
+  {
+  background: #999;
+  background-image: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url(../images/juice.jpg);
+  border-radius: 5px;
+  height: 100px;
+  width: 220px;
+  display:inline-block;
+  padding: 0 0 0 0px;
+  color: white;
+  }
+  input[type=checkbox]:checked + label
+  {
+  background: rgba(0, 128, 255, 0.24);
+  background-image: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url(../images/juice.jpg);
+  height: 100px;
+  width: 220px;
+  display:inline-block;
+  padding: 0 0 0 0px;
+  }
+
+/* .inputGroup {
   background-color: white;
   display: block;
   margin: 10px 0;
@@ -99,7 +134,7 @@ a {
 *::before,
 *::after {
   box-sizing: inherit;
-}
+} */
 
 
 .scrolling-wrapper {
@@ -110,8 +145,6 @@ a {
 .scrolling-wrapper card {
     flex: 0 0 auto;
 }
-
-
 
 
 
@@ -202,11 +235,95 @@ li{
   background-image: 
   linear-gradient(
     rgba(0, 0, 0, 0.2),
-    rgba(21, 29, 78, 0.6)
+    rgba(21, 29, 78, 0.424)
   ),
   url(https://images.unsplash.com/photo-1526127230111-0197afe94d72?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1200&h=500&fit=crop&ixid=eyJhcHBfaWQiOjF9);
 }
 
 .hide-button {
   visibility: hidden;
+}
+
+
+/* PREFERENCES */
+
+#option-juice {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../images/juice.jpg);
+}
+
+#option-cocoa {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../images/cocoa.jpg);
+}
+
+#option-coffee {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../images/coffee.jpg);
+}
+
+#option-cocoa {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../images/cocoa.jpg);
+}
+
+#option-donut {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../images/donut.jpg);
+}
+
+#option-glutenfree {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../images/gluten-free.jpg);
+}
+
+#option-salad {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../images/salad.jpg);
+}
+
+#option-sandwich {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../images/sandwich.jpg);
+}
+
+#option-tea {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../images/tea.jpg);
 }
