@@ -8,7 +8,7 @@ const orderSchema = new mongoose.Schema({
     },
     bar: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Bar' 
+        ref: 'Place' 
     },
     orderMenu: [{
         name: String,

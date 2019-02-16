@@ -42,14 +42,27 @@
     </div>
         
       <div class="checkboxes-container fav-place m-3 {{isFavMenu session.fav.bar.id place.id}}">
-        <button class="btn btn-primary fav-btn {{isFavBar session.fav.bar.id place.id}}" type="button" value="{{order.id}}" id="fav-menu-btn" >Favorito</button>
+        <button class="btn btn-primary fav-btn {{isFavOrderMenu order.orderMenu user.fav.menu}}" type="button" value="{{order.id}}" id="fav-menu-btn" >Favorito</button>
       </div>
     
     <div class="d-flex justify-content-end">
-        <a class="btn btn-primary mt-3" href="pay">Hacer Pedido</a>
-{{!-- <button type="submit" class="btn btn-primary mt-3">Hacer Pedido</button> --}}
+        <form action="/orders/{{order.id}}/completed" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_alk1A0a4L24JLGpgNHcAXGF7"
+    data-amount="{{mult order.total 100}}"
+    data-name="Robertusopo"
+    data-description="Example charge"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto"
+    data-currency="eur">
+  </script>
+</form>
+
     </div>
 </div>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/menuFav.js"></script>
+
+
