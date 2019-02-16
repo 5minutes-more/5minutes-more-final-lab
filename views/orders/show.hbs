@@ -5,7 +5,7 @@
         <div class="text-light list-group-item list-group-item active">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{place.name}}</h5>
-                <small>Order date: {{order.updatedAt}}</small>
+                <small>Order date: {{date-format order.updatedAt}}</small>
             </div>
             <p class="mb-1">{{place.vicinity}}</p>
             <small>Order id: {{order.id}}</small>
