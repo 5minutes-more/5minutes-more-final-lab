@@ -25,6 +25,14 @@ module.exports = (hbs) => {
         }
     })
 
+    hbs.registerHelper('isFavOrderMenu', (UserOrder, PlaceOrder) => {
+        if (UserOrder === PlaceOrder){
+            return "favorite";
+        } else {
+            return "";
+        }
+    })
+
     hbs.registerHelper('isFavMenu', (user, place) => {
         if (user === place){
             return "";

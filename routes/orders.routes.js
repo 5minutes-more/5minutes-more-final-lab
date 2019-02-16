@@ -16,4 +16,9 @@ router.post('/:restaurantId/expressOrder',
   userMiddleware.isRegistered,
   ordersController.doExpressOrder);
 
+router.post('/:orderId/completed',
+authMiddleware.isAuthenticated,
+  userMiddleware.isRegistered,
+  ordersController.doPay)
+
 module.exports = router;

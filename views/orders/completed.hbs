@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h1 class="display-4">Hola {{order.user.name}} tu pedido ha sido confirmado!</h1>
+  <p class="lead">El restaurante {{order.bar.name}} ha confirmado tu pedido. Podrás recogerlo en una media hora.</p>
+   <p class="lead"> Resumen de tu pedido:</p>
+   <ul>
+       {{#each order.orderMenu}}
+    <li>{{this.units}} units of {{this.name}}, {{mult this.units this.price}} </li>
+       {{/each }}
+    <li> Total: {{order.total}}€</li>
+   </ul>
+  <hr class="my-4">
+  <p>El cargo se reflejará en tu tarjeta en los proximos minutos.</p>
+  <a class="btn btn-primary btn-lg" href="/" role="button">Volver</a>
+</div>
