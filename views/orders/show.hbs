@@ -1,3 +1,4 @@
+<div class="container">
 {{> nav }}
 
 <div class="container mt-5">
@@ -41,7 +42,7 @@
     </div>
         
       <div class="checkboxes-container fav-place m-3 {{isFavMenu session.fav.bar.id place.id}}">
-        <button class="fav-btn" type="button" value="{{order.id}}" id="fav-menu-btn" >Favorito</button>
+        <button class="btn btn-primary fav-btn {{isFavBar session.fav.bar.id place.id}}" type="button" value="{{order.id}}" id="fav-menu-btn" >Favorito</button>
       </div>
     
     <div class="d-flex justify-content-end">
@@ -49,6 +50,6 @@
 {{!-- <button type="submit" class="btn btn-primary mt-3">Hacer Pedido</button> --}}
     </div>
 </div>
-
+</div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/js/menuFav.js"></script>
