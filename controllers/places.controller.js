@@ -7,26 +7,27 @@ const constants = require('../constants');
 const placesServices = require('../services/places.service');
 
 module.exports.doQuery = (req, res, next) => {
-  console.log("req.user => ", req.user.origin)
+  console.log('Entra en el doQuery', req.user.origin.coordinates)
   Place.find({
       "preferences": {
         $all: req.body.preferences
       }
-    }, {
-      location: {
-        '$near': {
-          '$geometry': {
+    ,
+      "location": {
+        $near: {
+  
+          $geometry: {
             type: 'Point',
             coordinates: req.user.origin.coordinates
           },
-          '$maxDistance': 1000
+          $maxDistance: 1000
         }
       }
     })
-    .then(places => res.render("places/query", {
-      places
-    }))
-    .catch(error => next)
+    .then(places =>{ 
+      console.log('Entra', places)
+      res.render("places/query", { places })})
+    .catch(error => next(error))
 }
 
 module.exports.main = (req, res, next) => {

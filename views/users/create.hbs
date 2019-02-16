@@ -1,23 +1,27 @@
 <div class="container">
   <article id="create-user">
     <form action="/users/create" method="post">
+    <h2 class="m-3">We need just a little more info:</h2>
       <div class="container">
+        
+        
         <div class="row">
+          
           <div class="col">
             <div class="container">
-              <h2 class="mb-3 mt-3">Find in the map your position:</h2>
+              
               <input hidden type="text" id="latitude" class="form-control" name="latitude"
                 value="{{session.origin.coordinates.[0]}}" placeholder="Latitude" />
               <input hidden type="text" id="longitude" class="form-control" name="longitude"
                 value="{{session.origin.coordinates.[1]}}" placeholder="Longitude" />
             </div>
-            <input id="pac-input" class="controls form-control mt-3 shadow-lg" style="width: 400px;" type="text"
-              placeholder="Search Box">
+            <input id="pac-input" class="controls form-control mt-3 shadow-lg" style="width: 50%;" type="text"
+              placeholder="Place yourself in the map">
             {{> map}}
           </div>
           <div class="col">
-            <div class="container">
-              <h2 class="mb-3 mt-3">Choose your breakfast preferences:</h2>
+            <div class="container"  style="height:100%">
+              <h3 class="mb-3 mt-3">Choose your breakfast preferences:</h3>
               <div class="d-flex flex-wrap">
                 {{#each allPreferences as |preference| }}
                 <div class="inputGroup m-3 mx-auto">
