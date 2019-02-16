@@ -68,6 +68,15 @@ body {
   font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+#logo-login  {
+  height: 25vh;
+  margin-bottom: 15px;
+}
+
+.navbar-logo{
+  height: 6vh;
+}
+
 .btn:hover {
   color: #212529;
   text-decoration: none;
@@ -130,9 +139,12 @@ body {
 /* Nav items */
 
 .nav-pic {
-  width: 20px;
+  width: 40px;
 }
 
+.navbar {
+  background-color: #f1f3f386;
+}
 
 .scrolling-wrapper {
   display: flex;

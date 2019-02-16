@@ -40,7 +40,7 @@
 }
 .blog-card:hover .card-info {
   opacity: 1;
-  bottom: 120px;
+  bottom: 100px;
 }
 .blog-card:hover .color-overlay {
   background: rgba(84, 104, 110, 0.8);

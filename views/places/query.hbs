@@ -1,41 +1,40 @@
-{{!-- <div class="container">
-  {{#each places}}
-  <div class="col-md-4">
-    <div class="card mb-4 shadow-sm">
-      <img class="card-img-top artist-cover"
-        src="https://source.unsplash.com/random/1200x500/?coffee,breakfast&sig={{randomImage}}" alt="{{this.name}}">
-      <div class="card-body">
-        <h5>{{this.name}}</5>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group pt-3">
-              <a href="/places/{{this.placeId}}" class="btn btn-sm  btn-outline-secondary">More info</a>
-            </div>
-          </div>
-      </div>
-    </div>
-  </div>
-  {{/each}}
-</div> --}}
+<link rel='stylesheet' href='/stylesheets/main.css' />
+<div class="container">
+  {{> nav}}
 
-{{> nav}}
-
-<div class="m-5">
   <div class="row">
+
     {{#each places}}
-    <div class="col-md-3 mx-auto">
-      <div class="card mb-4 shadow-sm">
-        <img class="card-img-top artist-cover"
-          src="https://source.unsplash.com/random/1200x500/?coffee,breakfast&sig={{randomImage}}" alt="{{this.name}}">
-        <div class="card-body">
-          <h5>{{this.name}}</5>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group pt-3">
-                <a href="/places/{{this.placeId}}" class="btn btn-sm  btn-outline-secondary">View more</a>
-              </div>
+    <div class="col-4 mt-3">
+      <div class="container" style="padding: 0px">
+        <div class="blog-card"
+          style="background: url(https://source.unsplash.com/random/1200x500/?coffee,breakfast&sig={{randomImage}})">
+          <div class="title-content">
+            <h3>{{this.name}}</h3>
+            <hr />
+            <div class="intro">{{this.vicinity}}</div>
+          </div><!-- /.title-content -->
+          <div class="card-info">
+            <div class="mb-3 mt-3 mx-auto">
+              {{#each this.preferences}}
+              <span class="badge badge-pill badge-info">{{this}}</span>
+              {{/each}}
             </div>
-        </div>
+            <a href="/places/{{this.placeId}}" class="btn btn-primary">Ver restaurante</a>
+          </div><!-- /.card-info -->
+          <div class="utility-info">
+            <ul class="utility-list">
+              <li><i class="far fa-star"></i> {{this.rating}}</li>
+            </ul>
+          </div><!-- /.utility-info -->
+          <!-- overlays -->
+          <div class="gradient-overlay"></div>
+          <div class="color-overlay"></div>
+        </div><!-- /.blog-card -->
       </div>
+
     </div>
     {{/each}}
+
   </div>
 </div>

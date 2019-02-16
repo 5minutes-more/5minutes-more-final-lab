@@ -1,30 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="/">5 minutes +</a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav-content" aria-controls="main-nav-content"
-	 aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light rounded">
+	<a class="navbar-brand" href="/"><img class="navbar-logo" src="/images/logo-5minutes-more_inverse_big.png"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav-content"
+		aria-controls="main-nav-content" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
 	<div class="collapse navbar-collapse" id="main-nav-content">
 		<ul class="navbar-nav mr-auto">
 			{{#isAdmin session}}
-				<li class="nav-item active">
-					<a class="nav-link" href="/users/list">Users</a>
-				</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="/users/list">Users</a>
+			</li>
 			{{/isAdmin}}
 		</ul>
-	</div>
-	<ul class="navbar-nav mr-auto">
-		{{#if session}}
-            <li class="nav-item mt-2">
-                <img class="nav-pic  rounded mx-auto d-block" src="{{session.photo}}"
-            </li>
-			<li class="nav-item">
+
+		<ul class="navbar-nav my-2 my-lg-0">
+			{{#if session}}
+			<li class="nav-item align-middle">
+				<img class="nav-pic rounded" src="{{session.photo}}">
+			</li>
+			<li class="nav-item active">
 				<a class="nav-link disabled" href="/users/edit">{{ session.email }}</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/sessions/create">Logout</a>
+			<li class="nav-item active">
+				<a class="nav-link disabled" href="/sessions/create">Logout</a>
 			</li>
-		{{/if}}
-	</ul>
+			{{/if}}
+		</ul>
+
+	</div>
+
 </nav>
