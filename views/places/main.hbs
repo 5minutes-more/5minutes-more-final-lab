@@ -67,14 +67,14 @@
           <div>
             <input id="option-{{this.id}}" name="preferences" value="{{this.id}}" type="checkbox"
               {{hasPreference ../session this preferences }} />
-            <label id="{{this.id}}" for="option-{{this.id}}">{{this.name}}</label>
+            <label class="label-button" id="{{this.id}}" for="option-{{this.id}}">{{this.name}}</label>
           </div>
         </div>
         {{/each}}
       </div>
     </div>
-    <div>
-      <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+    <div id="search-main" >
+      <button type="submit" class="btn btn-primary btn-lg w-50">Buscar</button>
     </div>
   </form>
 
