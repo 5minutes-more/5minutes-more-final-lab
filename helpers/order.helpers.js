@@ -1,7 +1,7 @@
 const moment = require('moment');
 
 module.exports = (hbs) => {
-  hbs.registerHelper('mult', (lvalue, rvalue, options) => lvalue * rvalue);
+  hbs.registerHelper('mult', (lvalue, rvalue, options) => (lvalue * rvalue).toFixed(2));
 
   hbs.registerHelper('clasif-food', (food, options) => {
     switch (food) {

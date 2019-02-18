@@ -215,6 +215,17 @@ body {
     url(https://source.unsplash.com/random/1200x500/?coffee,breakfast);
 }
 
+.jumbotronBackground-completed {
+  color: white;
+  background-image:
+    linear-gradient(rgba(84, 104, 110, 0.6),
+    rgba(84, 104, 110, 0.6)),
+    url(/images/cereal-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
 li {
   list-style: none;
 }
