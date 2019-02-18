@@ -10,6 +10,9 @@
             </div>
             <p class="mb-1">{{place.vicinity}}</p>
             <small>Order id: {{order.id}}</small>
+                  <div class="checkboxes-container fav-place mb-1 {{isFavMenu session.fav.bar.id place.id}}">
+        <button class="btn btn-primary fav-btn {{isFavOrderMenu order.orderMenu user.fav.menu}}" type="button" value="{{order.id}}" id="fav-menu-btn" >Favorite</button>
+      </div>
         </div>
         <div class="list-group-item list-group-item">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -38,12 +41,10 @@
                     <strong>{{order.total}}€</strong>
                 </li>
             </ul>
+            
         </div>
-    </div>
         
-      <div class="checkboxes-container fav-place m-3 {{isFavMenu session.fav.bar.id place.id}}">
-        <button class="btn btn-primary fav-btn {{isFavOrderMenu order.orderMenu user.fav.menu}}" type="button" value="{{order.id}}" id="fav-menu-btn" >Favorito</button>
-      </div>
+    </div>
     
     <div class="d-flex justify-content-end">
         <form action="/orders/{{order.id}}/completed" method="POST">

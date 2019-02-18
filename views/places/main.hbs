@@ -18,7 +18,7 @@
       
       {{#if session.fav.menu.orderMenu}}
       <div class="d-flex justify-content-end">
-        <a class="btn btn-outline-primary btn-xl mr-3" href="/places/{{favoriteRestaurant.placeId}}">Pedido</a> <button type="submit" class="btn btn-primary btn-xl">Pedido rápido</button>
+        <a class="btn btn-outline-primary btn-xl mr-3" href="/places/{{favoriteRestaurant.placeId}}">Order</a> <button type="submit" class="btn btn-primary btn-xl">Fast order</button>
       </div>
       {{/if}}
       
@@ -40,7 +40,7 @@
           <div class="intro">{{restaurant.vicinity}}</div>
         </div><!-- /.title-content -->
         <div class="card-info">
-          <a href="/places/{{restaurant.place_id}}" class="btn btn-primary">Ver restaurante</a>
+          <a href="/places/{{restaurant.place_id}}" class="btn btn-primary">Show restaurant</a>
         </div><!-- /.card-info -->
         <div class="utility-info">
           <ul class="utility-list">
@@ -67,14 +67,14 @@
           <div>
             <input id="option-{{this.id}}" name="preferences" value="{{this.id}}" type="checkbox"
               {{hasPreference ../session this preferences }} />
-            <label id="{{this.id}}" for="option-{{this.id}}">{{this.name}}</label>
+            <label class="label-button" id="{{this.id}}" for="option-{{this.id}}">{{this.name}}</label>
           </div>
         </div>
         {{/each}}
       </div>
     </div>
-    <div>
-      <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+    <div id="search-main" >
+      <button type="submit" class="btn btn-primary btn-lg w-50">Search</button>
     </div>
   </form>
 

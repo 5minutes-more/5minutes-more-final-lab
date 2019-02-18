@@ -27,7 +27,7 @@
                 <div class="inputGroup m-3 mx-auto">
                   <input id="option-{{preference.id}}" name="preferences" value="{{preference.id}}" type="checkbox"
                     {{hasPreference ../session preference user.preferences }} />
-                  <label id="{{preference.id}}" for="option-{{preference.id}}">{{preference.name}}</label>
+                  <label  class="label-button" id="{{preference.id}}" for="option-{{preference.id}}">{{preference.name}}</label>
                 </div>
                 {{/each}}
               </div>

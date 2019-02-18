@@ -30,6 +30,23 @@
 }
 
 
+/* btn btn-primary btn-lg */
+
+.stripe-button-el {
+  margin-top: 20px;
+}
+
+.list-group-item.active {    
+  background-color: rgba(84, 104, 110, 0.8);
+  border-color: #007bff00 !important;
+}
+
+#search-main {
+  display: flex;
+  justify-content: center;
+}
+
+
 #map {
   width: 100%;
   height: 100%;
@@ -276,14 +293,22 @@ input[type=checkbox] {
   display: none;
 }
 
+.label-button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
 input[type=checkbox]+#juice  {
   /* background: #999; */
   background-image:
-  linear-gradient(rgba(169, 143, 122, 0.8),
-  rgba(228, 115, 33, 0.8)),
+  linear-gradient(rgba(84, 104, 110, 0.4),
+  rgba(84, 104, 110, 0.4)),
   url(../images/juice.jpg);
-  background-blend-mode: multiply;
-  border-radius: 5px;
+  border-radius: 10px;
   height: 100px;
   width: 220px;
   display: inline-block;
@@ -294,10 +319,9 @@ input[type=checkbox]+#juice  {
 input[type=checkbox]:checked+#juice  {
   /* background: rgb(0, 128, 255); */
   background-image:
-  linear-gradient(rgba(251, 115, 3, 1),
-  rgba(243, 155, 19, 1)),
+  linear-gradient(rgba(84, 104, 110, 0.8),
+  rgba(84, 104, 110, 0.8)),
   url(../images/juice.jpg);
-  background-blend-mode: multiply;
   height: 100px;
   width: 220px;
   display: inline-block;
@@ -307,10 +331,10 @@ input[type=checkbox]:checked+#juice  {
 input[type=checkbox]+#cocoa  {
   /* background: #999; */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.2),
-  rgba(0, 0, 0, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.4),
+  rgba(84, 104, 110, 0.4)),
   url(../images/cocoa.jpg);
-  border-radius: 5px;
+  border-radius: 10px;
   height: 100px;
   width: 220px;
   display: inline-block;
@@ -321,8 +345,9 @@ input[type=checkbox]+#cocoa  {
 input[type=checkbox]:checked+#cocoa  {
   /* background: rgb(0, 128, 255); */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.685),
-  rgba(5, 226, 105, 0.2)),
+  
+  linear-gradient(rgba(84, 104, 110, 0.8),
+  rgba(84, 104, 110, 0.8)),
   url(../images/cocoa.jpg);
   height: 100px;
   width: 220px;
@@ -333,10 +358,10 @@ input[type=checkbox]:checked+#cocoa  {
 input[type=checkbox]+#coffee  {
   /* background: #999; */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.2),
-  rgba(0, 0, 0, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.4),
+  rgba(84, 104, 110, 0.4)),
   url(../images/coffee.jpg);
-  border-radius: 5px;
+  border-radius: 10px;
   height: 100px;
   width: 220px;
   display: inline-block;
@@ -347,8 +372,8 @@ input[type=checkbox]+#coffee  {
 input[type=checkbox]:checked+#coffee  {
   /* background: rgb(0, 128, 255); */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.685),
-  rgba(5, 226, 105, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.8),
+  rgba(84, 104, 110, 0.8)),
   url(../images/coffee.jpg);
   height: 100px;
   width: 220px;
@@ -359,10 +384,10 @@ input[type=checkbox]:checked+#coffee  {
 input[type=checkbox]+#donut  {
   /* background: #999; */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.2),
-  rgba(0, 0, 0, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.4),
+  rgba(84, 104, 110, 0.4)),
   url(../images/donut.jpg);
-  border-radius: 5px;
+  border-radius: 10px;
   height: 100px;
   width: 220px;
   display: inline-block;
@@ -373,8 +398,8 @@ input[type=checkbox]+#donut  {
 input[type=checkbox]:checked+#donut  {
   /* background: rgb(0, 128, 255); */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.685),
-  rgba(5, 226, 105, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.8),
+  rgba(84, 104, 110, 0.8)),
   url(../images/donut.jpg);
   height: 100px;
   width: 220px;
@@ -385,10 +410,10 @@ input[type=checkbox]:checked+#donut  {
 input[type=checkbox]+#glutenfree  {
   /* background: #999; */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.2),
-  rgba(0, 0, 0, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.4),
+  rgba(84, 104, 110, 0.4)),
   url(../images/gluten-free.jpg);
-  border-radius: 5px;
+  border-radius: 10px;
   height: 100px;
   width: 220px;
   display: inline-block;
@@ -399,8 +424,8 @@ input[type=checkbox]+#glutenfree  {
 input[type=checkbox]:checked+#glutenfree  {
   /* background: rgb(0, 128, 255); */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.685),
-  rgba(5, 226, 105, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.8),
+  rgba(84, 104, 110, 0.8)),
   url(../images/gluten-free.jpg);
   height: 100px;
   width: 220px;
@@ -411,10 +436,10 @@ input[type=checkbox]:checked+#glutenfree  {
 input[type=checkbox]+#salad  {
   /* background: #999; */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.2),
-  rgba(0, 0, 0, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.4),
+  rgba(84, 104, 110, 0.4)),
   url(../images/salad.jpg);
-  border-radius: 5px;
+  border-radius: 10px;
   height: 100px;
   width: 220px;
   display: inline-block;
@@ -425,8 +450,8 @@ input[type=checkbox]+#salad  {
 input[type=checkbox]:checked+#salad  {
   /* background: rgb(0, 128, 255); */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.685),
-  rgba(5, 226, 105, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.8),
+  rgba(84, 104, 110, 0.8)),
   url(../images/salad.jpg);
   height: 100px;
   width: 220px;
@@ -437,10 +462,10 @@ input[type=checkbox]:checked+#salad  {
 input[type=checkbox]+#sandwich  {
   /* background: #999; */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.2),
-  rgba(0, 0, 0, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.4),
+  rgba(84, 104, 110, 0.4)),
   url(../images/sandwich.jpg);
-  border-radius: 5px;
+  border-radius: 10px;
   height: 100px;
   width: 220px;
   display: inline-block;
@@ -451,8 +476,8 @@ input[type=checkbox]+#sandwich  {
 input[type=checkbox]:checked+#sandwich  {
   /* background: rgb(0, 128, 255); */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.685),
-  rgba(5, 226, 105, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.8),
+  rgba(84, 104, 110, 0.8)),
   url(../images/sandwich.jpg);
   height: 100px;
   width: 220px;
@@ -463,10 +488,10 @@ input[type=checkbox]:checked+#sandwich  {
 input[type=checkbox]+#tea  {
   /* background: #999; */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.2),
-  rgba(0, 0, 0, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.4),
+  rgba(84, 104, 110, 0.4)),
   url(../images/tea.jpg);
-  border-radius: 5px;
+  border-radius: 10px;
   height: 100px;
   width: 220px;
   display: inline-block;
@@ -477,78 +502,11 @@ input[type=checkbox]+#tea  {
 input[type=checkbox]:checked+#tea  {
   /* background: rgb(0, 128, 255); */
   background-image:
-  linear-gradient(rgba(0, 0, 0, 0.685),
-  rgba(5, 226, 105, 0.2)),
+  linear-gradient(rgba(84, 104, 110, 0.8),
+  rgba(84, 104, 110, 0.8)),
   url(../images/tea.jpg);
   height: 100px;
   width: 220px;
   display: inline-block;
   padding: 0 0 0 0px;
 }
-
-/* PREFERENCES */
-
-/* #juice {
-  background-image:
-    url(../images/juice.jpg);
-} */
-/* #juice:checked {
-  background-image:
-    url(../images/juice.jpg);
-} */
-
-/* #cocoa {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)),
-    url(../images/cocoa.jpg);
-}
-
-#coffee {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)),
-    url(../images/coffee.jpg);
-}
-
-#cocoa {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)),
-    url(../images/cocoa.jpg);
-}
-
-#donut {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)),
-    url(../images/donut.jpg);
-}
-
-#glutenfree {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)),
-    url(../images/gluten-free.jpg);
-}
-
-#salad {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)),
-    url(../images/salad.jpg);
-}
-
-#sandwich {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)),
-    url(../images/sandwich.jpg);
-}
-
-#tea {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.2)),
-    url(../images/tea.jpg);
-} */
