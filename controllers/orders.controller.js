@@ -97,10 +97,10 @@ module.exports.doPay = (req, res, next) => {
       return transporter.sendMail({
           from: '"5 minutes more" <a.lucia.cazorla@gmail.com>',
           to: order.user.email,
-          subject: `El restaurante ${order.bar.name} ha confirmado tu pedido.`,
-          html: `<h1 class="display-4">Hola ${order.user.name} tu pedido ha sido confirmado!</h1>
-      <p class="lead">El restaurante ${order.bar.name} ha confirmado tu pedido. Podrás recogerlo en una media hora.</p>
-       <p class="lead"> Resumen de tu pedido:</p>
+          subject: `The restaurant ${order.bar.name} has confirmed your order.`,
+          html: `<h1 class="display-4">Hi ${order.user.name}! your order has been confirmed!</h1>
+      <p class="lead">The restaurant ${order.bar.name} has confirmed your order. You can take it in around half an hour.</p>
+       <p class="lead"> Order summary:</p>
        <ul>
            
         <li>${menu}</li>
@@ -108,17 +108,17 @@ module.exports.doPay = (req, res, next) => {
         <li> Total: ${order.total}€</li>
        </ul>
       <hr class="my-4">
-      <p>El cargo se reflejará en tu tarjeta en los proximos minutos.</p>
-      <p>Muchísimas gracias por utilizar nuestra aplicación!</p>`
+      <p>The charge will appear in your account in a few minutes.</p>
+      <p>Thanks a lot for using our app! Hope you have enjoied it.</p>`
         })
         .then(mail => {
           return transporter.sendMail({
               from: '"5 minutes more" <a.lucia.cazorla@gmail.com>',
               to: order.bar.email,
-              subject: `El usuario ${order.user.name} ha realizado un pedido.`,
-              html: `<h1 class="display-4">Hola ${order.bar.name} has recibido un pedido!</h1>
-          <p class="lead">El usuario ${order.user.name} ha realizado un pedido. Deberás tenerlo listo en una media hora.</p>
-           <p class="lead"> Resumen del pedido:</p>
+              subject: `The user ${order.user.name} has made an order.`,
+              html: `<h1 class="display-4">Hi ${order.bar.name}! You have received an order!</h1>
+          <p class="lead">The user ${order.user.name} has made an order. You shoud have it completed in around half an hour.</p>
+           <p class="lead"> Order summary:</p>
            <ul>
                
             <li>${menu}</li>
@@ -126,8 +126,8 @@ module.exports.doPay = (req, res, next) => {
             <li> Total: ${order.total}€</li>
            </ul>
           <hr class="my-4">
-          <p>El pedido ha sido pagado con tarjeta.</p>
-          <p>Muchísimas gracias por utilizar nuestra aplicación!</p>`
+          <p>The order was already payed with credit card</p>
+          <p>Thanks a lot for using our app! Hope you have enjoied it!</p>`
             })
             .then(mail => {
               Order.findById(order._id)
